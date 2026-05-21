@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peña Donostiarras Bartzelona — Real Sociedad en Barcelona</title>
+  <style>
+    :root {
+      --blue:      #0057A8;
+      --blue-dk:   #003A73;
+      --blue-lt:   #1A73C8;
+      --sky:       #5ba4f0;
+      --white:     #FFFFFF;
+      --bg:        #080c12;
+      --bg-mid:    #0f1620;
+      --bg-card:   #141e2e;
+      --muted:     #7a8ea8;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--white); line-height:1.6; overflow-x:hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 2.5rem; height:62px;
+      background:rgba(8,12,18,.92); backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(0,87,168,.2);
+    }
+    .nav-logo { display:flex; align-items:center; gap:.7rem; text-decoration:none; color:#fff; }
+    .nav-logo svg { width:32px; height:32px; }
+    .nav-logo span { font-size:.92rem; font-weight:800; letter-spacing:.02em; }
+    .nav-logo span em { color:var(--sky); font-style:normal; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:.77rem; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:#fff; }
+    @media(max-width:720px){ .nav-links { display:none; } }
+
+    /* ── HERO ── */
+    .hero {
+      position:relative; height:100vh; min-height:580px;
+      display:flex; align-items:flex-end; justify-content:flex-start;
+      overflow:hidden;
+    }
+    .hero-photo {
+      position:absolute; inset:0;
+      background:url('imgs/hero.jpg') center/cover no-repeat;
+    }
+    .hero-photo::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(
+        to right,
+        rgba(8,12,18,.88) 0%,
+        rgba(8,12,18,.55) 50%,
+        rgba(8,12,18,.15) 100%
+      ),
+      linear-gradient(
+        to top,
+        rgba(8,12,18,.7) 0%,
+        transparent 40%
+      );
+    }
+    .hero-content {
+      position:relative; padding:0 2.5rem 5rem;
+      max-width:640px;
+    }
+    .hero-eyebrow {
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:rgba(0,87,168,.3); border:1px solid rgba(0,87,168,.55);
+      border-radius:999px; padding:.3rem 1rem;
+      font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--sky); margin-bottom:1.5rem; backdrop-filter:blur(6px);
+    }
+    .hero-eyebrow::before {
+      content:''; width:6px; height:6px;
+      background:var(--sky); border-radius:50%;
+      animation:pulse 1.6s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.25;} }
+    .hero h1 {
+      font-size:clamp(2.6rem,7vw,5rem); font-weight:900;
+      line-height:1.0; letter-spacing:-.03em;
+      text-shadow:0 2px 24px rgba(0,0,0,.5);
+      margin-bottom:.5rem;
+    }
+    .hero h1 span { color:var(--sky); display:block; }
+    .hero-sub { font-size:1rem; color:rgba(255,255,255,.55); letter-spacing:.18em; text-transform:uppercase; margin-bottom:.75rem; }
+    .hero-quote { font-size:1.05rem; color:rgba(255,255,255,.65); font-style:italic; margin-bottom:2.2rem; border-left:2px solid var(--blue); padding-left:1rem; }
+    .hero-cta { display:flex; gap:.85rem; flex-wrap:wrap; }
+    .btn { display:inline-block; padding:.8rem 1.8rem; border-radius:8px; font-weight:700; font-size:.88rem; letter-spacing:.04em; text-decoration:none; transition:all .18s; cursor:pointer; border:none; }
+    .btn-blue  { background:var(--blue); color:#fff; }
+    .btn-blue:hover  { background:var(--blue-lt); transform:translateY(-2px); }
+    .btn-ghost { background:rgba(255,255,255,.08); color:#fff; border:1px solid rgba(255,255,255,.22); backdrop-filter:blur(6px); }
+    .btn-ghost:hover { background:rgba(255,255,255,.16); transform:translateY(-2px); }
+    .hero-scroll {
+      position:absolute; bottom:2rem; right:2.5rem;
+      display:flex; flex-direction:column; align-items:center; gap:.4rem;
+      color:rgba(255,255,255,.3); font-size:.65rem; letter-spacing:.12em; text-transform:uppercase;
+    }
+    .scroll-bar { width:1px; height:36px; background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent); animation:grow 1.8s ease-in-out infinite; }
+    @keyframes grow { 0%{transform:scaleY(0);opacity:0;} 50%{opacity:1;} 100%{transform:scaleY(1);opacity:0;} }
+
+    /* ── STATS ── */
+    .stats { background:var(--blue); padding:1.4rem 2.5rem; }
+    .stats-row { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center; }
+    .stat .n { font-size:1.9rem; font-weight:900; display:block; line-height:1.1; }
+    .stat .l { font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; opacity:.75; margin-top:.2rem; }
+    @media(max-width:560px){ .stats-row { grid-template-columns:repeat(2,1fr); } }
+
+    /* ── LAYOUT UTILS ── */
+    section { padding:5.5rem 2.5rem; }
+    .wrap { max-width:1100px; margin:0 auto; }
+    .tag { display:inline-block; color:var(--sky); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; font-weight:700; margin-bottom:.6rem; }
+    .sh { font-size:clamp(1.7rem,3.5vw,2.6rem); font-weight:900; line-height:1.1; margin-bottom:.9rem; }
+    .sp { font-size:.97rem; color:var(--muted); max-width:580px; margin-bottom:2.5rem; line-height:1.8; }
+    .rule { height:1px; background:linear-gradient(90deg,transparent,rgba(0,87,168,.35),transparent); }
+
+    /* ── ABOUT ── */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4.5rem; align-items:center; }
+    .about-img-wrap { position:relative; }
+    .about-img { width:100%; height:440px; object-fit:cover; border-radius:16px; display:block; }
+    .about-badge {
+      position:absolute; bottom:-16px; left:-16px;
+      background:var(--blue); color:#fff;
+      padding:1.1rem 1.5rem; border-radius:12px; text-align:center;
+      box-shadow:0 8px 32px rgba(0,87,168,.55);
+    }
+    .about-badge .big { font-size:1.8rem; font-weight:900; display:block; line-height:1; }
+    .about-badge .sm  { font-size:.65rem; letter-spacing:.08em; text-transform:uppercase; opacity:.8; margin-top:.2rem; }
+    .pills { display:flex; flex-wrap:wrap; gap:.45rem; margin-top:1.5rem; }
+    .pill { background:rgba(0,87,168,.15); border:1px solid rgba(0,87,168,.4); border-radius:999px; padding:.28rem .85rem; font-size:.76rem; color:var(--sky); }
+    @media(max-width:760px){ .about-grid { grid-template-columns:1fr; gap:2.5rem; } .about-badge { left:auto; right:8px; bottom:-8px; } }
+
+    /* ── GALLERY ── */
+    .gal { background:var(--bg-mid); }
+    .gal-grid {
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      grid-template-rows:280px 280px;
+      gap:10px;
+    }
+    .gal-item { position:relative; overflow:hidden; border-radius:12px; }
+    .gal-item.tall { grid-row:span 2; }
+    .gal-item img { width:100%; height:100%; object-fit:cover; transition:transform .5s ease; display:block; }
+    .gal-item:hover img { transform:scale(1.05); }
+    .gal-item .cap {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:.85rem 1rem;
+      background:linear-gradient(transparent,rgba(0,0,0,.75));
+      font-size:.8rem; color:rgba(255,255,255,.85);
+      transform:translateY(100%); transition:transform .3s;
+    }
+    .gal-item:hover .cap { transform:translateY(0); }
+    @media(max-width:680px){ .gal-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; } .gal-item.tall { grid-row:auto; } }
+
+    /* ── PRESS ── */
+    .press-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; grid-auto-rows:1fr; }
+    .press-card {
+      background:var(--bg-card); border-radius:16px;
+      border:1px solid rgba(255,255,255,.07);
+      padding:2rem; transition:transform .2s, border-color .2s;
+      display:flex; flex-direction:column;
+      position:relative; overflow:hidden;
+    }
+    .press-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg,var(--blue),var(--sky));
+    }
+    .press-card:hover { transform:translateY(-4px); border-color:rgba(0,87,168,.4); }
+    .press-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.2rem; }
+    .press-logo-box {
+      background:#fff; border-radius:8px;
+      padding:.35rem .7rem; height:32px;
+      display:flex; align-items:center;
+    }
+    .press-logo-box img { height:16px; width:auto; object-fit:contain; display:block; }
+    .press-logo-fallback { font-size:.65rem; font-weight:800; color:#111; letter-spacing:.04em; }
+    .press-date { font-size:.7rem; color:var(--muted); }
+    .press-card h3 { font-size:1rem; font-weight:700; line-height:1.45; margin-bottom:.7rem; }
+    .press-card p { font-size:.85rem; color:var(--muted); line-height:1.75; flex:1; }
+    .press-link { display:inline-flex; align-items:center; gap:.4rem; color:var(--sky); font-size:.78rem; font-weight:600; text-decoration:none; margin-top:1.2rem; }
+    .press-link::after { content:'→'; transition:transform .2s; }
+    .press-card:hover .press-link::after { transform:translateX(4px); }
+    @media(max-width:680px){ .press-grid { grid-template-columns:1fr; } }
+
+    /* ── TIMELINE ── */
+    .history { background:var(--bg-mid); }
+    .history-wrap { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+    .tl { position:relative; padding-left:2rem; }
+    .tl::before { content:''; position:absolute; left:0; top:6px; bottom:0; width:2px; background:linear-gradient(to bottom,var(--blue),transparent); }
+    .tl-item { position:relative; padding-bottom:2.5rem; }
+    .tl-dot { position:absolute; left:-2rem; top:.45rem; width:12px; height:12px; background:var(--blue); border-radius:50%; border:2.5px solid var(--bg-mid); box-shadow:0 0 0 3px rgba(0,87,168,.3); }
+    .tl-year { font-size:.68rem; color:var(--sky); letter-spacing:.12em; text-transform:uppercase; font-weight:700; margin-bottom:.25rem; }
+    .tl-item h3 { font-size:1rem; font-weight:700; margin-bottom:.35rem; }
+    .tl-item p  { color:var(--muted); font-size:.88rem; line-height:1.7; }
+    @media(max-width:760px){ .history-wrap { grid-template-columns:1fr; gap:2.5rem; } }
+
+    /* ── ÚNETE ── */
+    .join { background:linear-gradient(135deg,#001a3d 0%,var(--bg) 100%); position:relative; overflow:hidden; }
+    .join::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(0,87,168,.22) 0%,transparent 70%); }
+    .join-inner { position:relative; text-align:center; max-width:720px; margin:0 auto; }
+    .join-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin:2.5rem 0; text-align:left; }
+    .join-card { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.09); border-radius:14px; padding:1.5rem; backdrop-filter:blur(6px); }
+    .join-n { font-size:2.6rem; font-weight:900; color:rgba(0,87,168,.45); line-height:1; }
+    .join-card h4 { font-size:.95rem; font-weight:700; margin:.45rem 0 .3rem; }
+    .join-card p  { color:var(--muted); font-size:.82rem; line-height:1.6; }
+    @media(max-width:580px){ .join-cards { grid-template-columns:1fr; } }
+
+    /* ── CONTACT ── */
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+    .wa-btn {
+      display:flex; align-items:center; gap:1rem;
+      background:#25D366; border-radius:12px; padding:1.1rem 1.4rem;
+      text-decoration:none; color:#fff; margin-bottom:1.8rem;
+      box-shadow:0 6px 24px rgba(37,211,102,.3);
+      transition:transform .2s, box-shadow .2s;
+    }
+    .wa-btn:hover { transform:translateY(-2px); box-shadow:0 10px 32px rgba(37,211,102,.4); }
+    .wa-btn svg { width:32px; height:32px; flex-shrink:0; }
+    .wa-btn strong { display:block; font-size:.98rem; font-weight:800; }
+    .wa-btn small { font-size:.78rem; opacity:.85; }
+    .cd { display:flex; gap:.9rem; margin-bottom:1.1rem; align-items:flex-start; }
+    .cd-icon { width:38px; height:38px; background:rgba(0,87,168,.2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:.95rem; flex-shrink:0; }
+    .cd h5 { font-size:.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-bottom:.2rem; }
+    .cd p  { font-size:.92rem; }
+    .cd a  { color:var(--sky); text-decoration:none; }
+    .form-box { background:var(--bg-card); border-radius:16px; padding:2rem; border:1px solid rgba(0,87,168,.25); }
+    .form-box h3 { font-size:1.05rem; font-weight:700; margin-bottom:1.4rem; }
+    .field { margin-bottom:.9rem; }
+    .field label { display:block; font-size:.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-bottom:.35rem; }
+    .field input, .field textarea, .field select {
+      width:100%; background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.09); border-radius:8px;
+      padding:.7rem .95rem; color:#fff; font-size:.88rem;
+      outline:none; font-family:inherit; transition:border-color .2s;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color:rgba(0,87,168,.6); }
+    .field select option { background:var(--bg-card); }
+    @media(max-width:760px){ .contact-grid { grid-template-columns:1fr; gap:2.5rem; } }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position:fixed; bottom:2rem; right:2rem; z-index:300;
+      display:flex; align-items:center; gap:.7rem;
+      background:#25D366; color:#fff;
+      padding:.75rem 1.3rem .75rem 1rem; border-radius:999px;
+      box-shadow:0 4px 24px rgba(37,211,102,.5);
+      text-decoration:none; font-weight:700; font-size:.85rem;
+      transition:transform .2s, box-shadow .2s;
+      animation:wapop .5s ease .8s both;
+    }
+    .wa-float:hover { transform:translateY(-3px) scale(1.04); box-shadow:0 10px 36px rgba(37,211,102,.55); }
+    .wa-float svg { width:24px; height:24px; flex-shrink:0; }
+    @keyframes wapop { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+    @media(max-width:480px){ .wa-float span{display:none;} .wa-float{padding:.9rem;} }
+
+    /* ── FOOTER ── */
+    footer { background:var(--bg-mid); border-top:1px solid rgba(255,255,255,.05); padding:3rem 2.5rem 2rem; }
+    .foot-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; }
+    .foot-brand .name { font-size:1.05rem; font-weight:800; }
+    .foot-brand .name span { color:var(--sky); }
+    .foot-brand p { color:var(--muted); font-size:.83rem; margin-top:.6rem; line-height:1.7; }
+    .foot-col h5 { font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:.9rem; }
+    .foot-col a { display:block; color:rgba(255,255,255,.6); text-decoration:none; font-size:.83rem; margin-bottom:.45rem; transition:color .2s; }
+    .foot-col a:hover { color:#fff; }
+    .foot-bottom { max-width:1100px; margin:2rem auto 0; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.05); display:flex; justify-content:space-between; font-size:.72rem; color:rgba(255,255,255,.2); flex-wrap:wrap; gap:.5rem; }
+    @media(max-width:680px){ .foot-grid { grid-template-columns:1fr; gap:2rem; } footer{padding:3rem 1.5rem 2rem;} .foot-bottom{flex-direction:column;} }
+  </style>
+</head>
+<body>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/34618433942?text=Hola%2C%20me%20interesa%20unirme%20a%20la%20Pe%C3%B1a%20Donostiarras%20Bartzelona%20%F0%9F%92%99%F0%9F%A4%8D" target="_blank" rel="noopener" class="wa-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 4L72 16V46Q72 64 40 76Q8 64 8 46V16Z" fill="#0057A8" stroke="#fff" stroke-width="2"/>
+      <rect x="8" y="16" width="32" height="30" fill="#fff"/>
+      <rect x="40" y="46" width="32" height="20" fill="#fff"/>
+      <path d="M8 46Q8 64 40 76V46H8Z" fill="#0057A8"/>
+    </svg>
+    <span>Donostiarras <em>Bartzelona</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#prensa">Prensa</a></li>
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#unete">Únete</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Peña Oficial · Real Sociedad · Barcelona · Desde 2014</div>
+    <p class="hero-sub">Barcelona, Catalunya</p>
+    <h1>Donostiarras<span>Bartzelona</span></h1>
+    <p class="hero-quote">"Txuri-urdin bihotzetik" — Txuri-urdin desde el corazón</p>
+    <div class="hero-cta">
+      <a href="#unete" class="btn btn-blue">Hazte socio</a>
+      <a href="#galeria" class="btn btn-ghost">Ver galería</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-bar"></div></div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-row">
+    <div class="stat"><span class="n">2014</span><span class="l">Año de fundación</span></div>
+    <div class="stat"><span class="n">10+</span><span class="l">Años de historia</span></div>
+    <div class="stat"><span class="n">BCN</span><span class="l">C/ Cantabria, 79</span></div>
+    <div class="stat"><span class="n">1909</span><span class="l">Real Sociedad fundada</span></div>
+  </div>
+</div>
+
+<!-- SOBRE NOSOTROS -->
+<section id="nosotros">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img class="about-img" src="imgs/local-camiseta.jpg" alt="Local de la Peña Donostiarras Bartzelona con la camiseta txuri-urdin y bufandas">
+        <div class="about-badge">
+          <span class="big">+10</span>
+          <span class="sm">Años txuri-urdin<br>en Barcelona</span>
+        </div>
+      </div>
+      <div>
+        <span class="tag">Quiénes somos</span>
+        <h2 class="sh">La afición txuri-urdin<br>vive en Barcelona</h2>
+        <p class="sp">Somos la Peña Donostiarras Bartzelona, el hogar de los seguidores de la Real Sociedad en la ciudad condal. Inaugurada oficialmente el 5 de octubre de 2014, llevamos más de una década uniendo a todos los txuri-urdin que, lejos de Donostia, siguen latiendo con los colores azul y blanco.</p>
+        <p style="color:var(--muted);line-height:1.8;font-size:.92rem;margin-bottom:1.5rem;">Somos miembros de <strong style="color:#fff">Realaren Lagun Taldeak</strong>, la agrupación oficial de peñas de la Real Sociedad, lo que nos vincula directamente al club y a la gran familia txuri-urdin de todo el mundo. Desde nuestro local en el corazón de Barcelona organizamos quedadas para ver los partidos, viajes a Anoeta y múltiples actividades para mantener viva la llama donostiarra.</p>
+        <div class="pills">
+          <span class="pill">⚪🔵 Txuri-urdin</span>
+          <span class="pill">🏙️ Barcelona</span>
+          <span class="pill">🏆 Peña Oficial</span>
+          <span class="pill">🤝 Realaren Lagun Taldeak</span>
+          <span class="pill">📍 C/ Cantabria, 79</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- GALERÍA -->
+<section id="galeria" class="gal">
+  <div class="wrap">
+    <span class="tag">Galería</span>
+    <h2 class="sh">Momentos txuri-urdin</h2>
+    <p class="sp">Diez años de partidos, viajes, cenas y celebraciones. Estos son algunos de nuestros momentos.</p>
+    <div class="gal-grid">
+      <div class="gal-item tall">
+        <img src="imgs/local-socios.jpg" alt="Socios de la peña viendo un partido en el local">
+        <div class="cap">Todos juntos en el local — día de partido</div>
+      </div>
+      <div class="gal-item">
+        <img src="imgs/aniversario.jpg" alt="Cena del 10º aniversario de la peña">
+        <div class="cap">10º aniversario · Junio 2024</div>
+      </div>
+      <div class="gal-item">
+        <img src="imgs/local-camiseta.jpg" alt="Camiseta y bufandas de la peña en el local">
+        <div class="cap">El local txuri-urdin — C/ Cantabria 79</div>
+      </div>
+      <div class="gal-item" style="grid-column:span 2;">
+        <img src="imgs/socios.jpg" alt="Socios de la peña en Barcelona" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        <div class="cap">Socios de la peña — siempre txuri-urdin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- PRENSA -->
+<section id="prensa">
+  <div class="wrap">
+    <span class="tag">Prensa y medios</span>
+    <h2 class="sh">La peña en los medios</h2>
+    <p class="sp">Diez años de historia que han dejado huella en la prensa deportiva.</p>
+    <div class="press-grid">
+
+      <div class="press-card">
+        <div class="press-top">
+          <div class="press-logo-box">
+            <img src="https://logo.clearbit.com/noticiasdegipuzkoa.eus" alt="Noticias de Gipuzkoa"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span class="press-logo-fallback" style="display:none">Noticias de Gipuzkoa</span>
+          </div>
+          <span class="press-date">30 junio 2024</span>
+        </div>
+        <h3>La peña Donostiarras Bartzelona celebra su décimo aniversario</h3>
+        <p>El periódico de referencia en Gipuzkoa dedicó un reportaje completo con galería de fotos a la celebración del décimo aniversario de la peña en Barcelona. Diez años de pasión txuri-urdin en la ciudad condal, reconocidos desde Donostia.</p>
+        <a href="https://www.noticiasdegipuzkoa.eus/reala/2024/06/30/pena-donostiarra-bartzelona-celebra-decimo-8422544.html" target="_blank" rel="noopener" class="press-link">Leer artículo</a>
+      </div>
+
+      <div class="press-card">
+        <div class="press-top">
+          <div class="press-logo-box">
+            <img src="https://logo.clearbit.com/mundodeportivo.com" alt="Mundo Deportivo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span class="press-logo-fallback" style="display:none">Mundo Deportivo</span>
+          </div>
+          <span class="press-date">29 junio 2024</span>
+        </div>
+        <h3>Juan Gómez apadrina el 10º aniversario de Donostiarras Bartzelona</h3>
+        <p>El exjugador argentino de la Real Sociedad Juan Gómez (127 partidos, 1996–2000) fue el padrino del 10º aniversario de la peña en Barcelona. Un homenaje que unió historia del club e historia de la peña.</p>
+        <a href="https://www.mundodeportivo.com/futbol/real-sociedad/20240629/1002273188/juan-gomez-apadrina-10o-aniversario-donostiarras-bartzelona.html" target="_blank" rel="noopener" class="press-link">Leer artículo</a>
+      </div>
+
+      <div class="press-card">
+        <div class="press-top">
+          <div class="press-logo-box">
+            <img src="https://logo.clearbit.com/liniaxarxa.cat" alt="Línia Xarxa"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span class="press-logo-fallback" style="display:none">Línia Sant Martí</span>
+          </div>
+          <span class="press-date">Liniaxarxa.cat</span>
+        </div>
+        <h3>La penya Donostiarras Bartzelona: la Real Sociedad també 'juga' a Sant Martí</h3>
+        <p>El periódico del barrio de Sant Martí de Barcelona dedicó un reportaje a la peña, destacando su arraigo en el distrito y cómo mantienen viva la pasión txuri-urdin en pleno corazón de la ciudad.</p>
+        <a href="https://liniaxarxa.cat/esports/la-pena-donostiarras-bartzelona-la-real-sociedad-tambe-juga-a-sant-marti/" target="_blank" rel="noopener" class="press-link">Leer artículo</a>
+      </div>
+
+      <div class="press-card">
+        <div class="press-top">
+          <div class="press-logo-box">
+            <img src="https://logo.clearbit.com/mundodeportivo.com" alt="Mundo Deportivo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span class="press-logo-fallback" style="display:none">Mundo Deportivo</span>
+          </div>
+          <span class="press-date">9 enero 2018</span>
+        </div>
+        <h3>La pasión por la Real aflora en la ciudad condal</h3>
+        <p>El diario deportivo más antiguo de España publicó un reportaje con fotos sobre la comunidad de aficionados de la Real Sociedad en Barcelona, con la Peña Donostiarras Bartzelona como protagonista principal.</p>
+        <a href="https://www.mundodeportivo.com/futbol/real-sociedad/20180109/434190363841/la-pasion-por-la-real-aflora-en-la-ciudad-condal.html" target="_blank" rel="noopener" class="press-link">Leer artículo</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- HISTORIA -->
+<section id="historia" class="history">
+  <div class="wrap">
+    <div class="history-wrap">
+      <div>
+        <span class="tag">Nuestra historia</span>
+        <h2 class="sh">Más de una década<br>de pasión txuri-urdin</h2>
+        <p class="sp">Todo empezó con un grupo de aficionados que no querían ver solos los partidos de su equipo. Hoy somos una gran familia con historia propia.</p>
+        <img src="imgs/aniversario.jpg" alt="Cena del 10º aniversario de la Peña Donostiarras Bartzelona" style="width:100%;border-radius:12px;margin-top:.5rem;display:block;">
+        <p style="font-size:.78rem;color:var(--muted);margin-top:.5rem;text-align:center;font-style:italic;">Cena del 10º aniversario · Barcelona, junio 2024</p>
+      </div>
+      <div class="tl" style="padding-top:4rem;">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Agosto 2014</div>
+          <h3>Los primeros partidos juntos</h3>
+          <p>El primer partido que vieron juntos fue el Eibar vs Real Sociedad del 24 de agosto de 2014, jornada 1 de Liga. La semilla de la peña ya estaba plantada.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">5 octubre 2014</div>
+          <h3>Inauguración oficial</h3>
+          <p>La Peña Donostiarras Bartzelona se inaugura oficialmente. En ese momento, la única peña de la Real Sociedad en Barcelona.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Diciembre 2014</div>
+          <h3>Derbi vasco con Lehoi Beltz</h3>
+          <p>Se vivió el derbi vasco junto a la peña del Athletic Club Lehoi Beltz. Empate 1-1 y tarde de convivencia entre aficionados de ambos equipos.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Enero 2018</div>
+          <h3>Mundo Deportivo se fija en la peña</h3>
+          <p>El diario Mundo Deportivo publica "La pasión por la Real aflora en la ciudad condal", con la peña como protagonista.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Junio 2024</div>
+          <h3>10º aniversario</h3>
+          <p>Juan Gómez, exjugador de la Real, apadrina el evento. Noticias de Gipuzkoa y Mundo Deportivo cubren la celebración del décimo aniversario.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ÚNETE -->
+<section id="unete" class="join">
+  <div class="wrap">
+    <div class="join-inner">
+      <span class="tag">Hazte socio</span>
+      <h2 class="sh" style="text-align:center;">Únete a la familia<br>txuri-urdin en Barcelona</h2>
+      <p class="sp" style="margin:0 auto;text-align:center;">Si eres aficionado de la Real Sociedad y vives en Barcelona, tu sitio está aquí. No vuelvas a ver un partido solo.</p>
+      <div class="join-cards">
+        <div class="join-card">
+          <div class="join-n">01</div>
+          <h4>Contáctanos</h4>
+          <p>Escríbenos por WhatsApp o redes sociales. Estamos en C/ Cantabria, 79, Barcelona.</p>
+        </div>
+        <div class="join-card">
+          <div class="join-n">02</div>
+          <h4>Ven a conocernos</h4>
+          <p>Apúntate a la próxima quedada para ver un partido y conoce a toda la familia txuri-urdin.</p>
+        </div>
+        <div class="join-card">
+          <div class="join-n">03</div>
+          <h4>Hazte socio</h4>
+          <p>Formaliza tu alta y empieza a disfrutar de viajes a Anoeta, eventos y mucho más.</p>
+        </div>
+      </div>
+      <a href="#contacto" class="btn btn-blue" style="font-size:.95rem;padding:.9rem 2.2rem;">¡Quiero unirme! →</a>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <span class="tag">Contacto</span>
+        <h2 class="sh">¿Dónde<br>encontrarnos?</h2>
+        <p style="color:var(--muted);margin-bottom:1.8rem;line-height:1.8;font-size:.93rem;">Estamos en Barcelona y nos encanta conocer a nuevos aficionados de la Real. No dudes en pasarte por el local o contactarnos.</p>
+
+        <a href="https://wa.me/34618433942?text=Hola%2C%20me%20interesa%20unirme%20a%20la%20Pe%C3%B1a%20Donostiarras%20Bartzelona%20%F0%9F%92%99%F0%9F%A4%8D" target="_blank" rel="noopener" class="wa-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div>
+            <strong>Escríbenos por WhatsApp</strong>
+            <small>+34 618 433 942 · Te respondemos enseguida</small>
+          </div>
+        </a>
+
+        <div class="cd"><div class="cd-icon">📍</div><div><h5>Dirección</h5><p>C/ Cantabria, Nº 79, Barcelona</p></div></div>
+        <div class="cd"><div class="cd-icon">📅</div><div><h5>Quedadas</h5><p>Días de partido de la Real Sociedad</p></div></div>
+        <div class="cd"><div class="cd-icon">🐦</div><div><h5>Twitter / X</h5><p><a href="https://twitter.com/DonostiarrasBCN">@DonostiarrasBCN</a> · <a href="https://twitter.com/DBartzelona">@DBartzelona</a></p></div></div>
+        <div class="cd"><div class="cd-icon">📸</div><div><h5>Instagram</h5><p><a href="https://www.instagram.com/donostiarrasbartzelona/">@donostiarrasbartzelona</a></p></div></div>
+        <div class="cd"><div class="cd-icon">🌐</div><div><h5>Blog</h5><p><a href="https://donostiarrasbartzelona.blogspot.com">donostiarrasbartzelona.blogspot.com</a></p></div></div>
+      </div>
+
+      <div class="form-box">
+        <h3>Envíanos un mensaje</h3>
+        <form onsubmit="handleForm(event)">
+          <div class="field"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+          <div class="field"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
+          <div class="field"><label>¿Eres socio de la Real?</label>
+            <select><option value="">Selecciona una opción</option><option>Sí, soy abonado</option><option>Sí, soy socio</option><option>No, pero soy aficionado</option></select>
+          </div>
+          <div class="field"><label>Mensaje</label><textarea rows="4" placeholder="Cuéntanos cómo te enteraste de la peña..."></textarea></div>
+          <button type="submit" class="btn btn-blue" style="width:100%;font-size:.9rem;">Enviar mensaje ✉️</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="name">Donostiarras <span>Bartzelona</span></div>
+      <p>Peña oficial de la Real Sociedad de Fútbol en Barcelona.<br>Fundada el 5 de octubre de 2014.<br>Miembro de Realaren Lagun Taldeak.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Navegación</h5>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#galeria">Galería</a>
+      <a href="#prensa">Prensa</a>
+      <a href="#historia">Historia</a>
+      <a href="#unete">Únete</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="foot-col">
+      <h5>Redes y enlaces</h5>
+      <a href="https://twitter.com/DonostiarrasBCN" target="_blank" rel="noopener">@DonostiarrasBCN</a>
+      <a href="https://twitter.com/DBartzelona" target="_blank" rel="noopener">@DBartzelona</a>
+      <a href="https://www.instagram.com/donostiarrasbartzelona/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://donostiarrasbartzelona.blogspot.com" target="_blank" rel="noopener">Blog oficial</a>
+      <a href="https://www.realsociedad.eus" target="_blank" rel="noopener">Real Sociedad</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Peña Donostiarras Bartzelona</span>
+    <span>Miembro de Realaren Lagun Taldeak · Peña Oficial Real Sociedad</span>
+  </div>
+</footer>
+
+<script>
+function handleForm(e){
+  e.preventDefault();
+  alert('¡Eskerrik asko! Nos pondremos en contacto contigo pronto.\n\nAupa la Real! 💙🤍');
+}
+const sections = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const id = e.target.id;
+      links.forEach(l => l.style.color = l.getAttribute('href')==='#'+id ? '#fff' : '');
+    }
+  });
+}, {threshold:.4});
+sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>
