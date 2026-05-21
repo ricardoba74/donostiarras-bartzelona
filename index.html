@@ -24,7 +24,7 @@
     nav {
       position:fixed; top:0; left:0; right:0; z-index:200;
       display:flex; align-items:center; justify-content:space-between;
-      padding:0 2.5rem; height:170px;
+      padding:0 2.5rem; height:120px;
       background:rgba(8,12,18,.92); backdrop-filter:blur(18px);
       border-bottom:1px solid rgba(0,87,168,.2);
     }
@@ -32,8 +32,8 @@
     .nav-logo svg { width:32px; height:32px; }
     .nav-logo span { font-size:.92rem; font-weight:800; letter-spacing:.02em; }
     .nav-logo span em { color:var(--sky); font-style:normal; }
-    .nav-links { display:flex; gap:2rem; list-style:none; }
-    .nav-links a { color:var(--muted); text-decoration:none; font-size:.77rem; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
+    .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:1.3rem; letter-spacing:.06em; text-transform:uppercase; transition:color .2s; font-weight:600; }
     .nav-links a:hover { color:#fff; }
     @media(max-width:720px){ .nav-links { display:none; } }
 
@@ -279,7 +279,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="imgs/logo-transparent.png" alt="Peña Donostiarras Bartzelona" style="height:156px;width:auto;">
+    <img src="imgs/logo-transparent.png" alt="Peña Donostiarras Bartzelona" style="height:100px;width:auto;">
   </a>
   <ul class="nav-links">
     <li><a href="#nosotros">Nosotros</a></li>
