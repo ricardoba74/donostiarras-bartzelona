@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ricardoba74.github.io/donostiarras-bartzelona/</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ricardoba74.github.io/donostiarras-bartzelona/imgs/og-image.jpg</image:loc>
+      <image:title>Peña Donostiarras Bartzelona — Peña oficial de la Real Sociedad en Barcelona</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ricardoba74.github.io/donostiarras-bartzelona/imgs/copa-final.webp</image:loc>
+      <image:title>Socios de la peña con la bufanda de la Final de Copa 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ricardoba74.github.io/donostiarras-bartzelona/imgs/aniversario.webp</image:loc>
+      <image:title>Cena del décimo aniversario de la peña, junio de 2024</image:title>
+    </image:image>
+  </url>
+</urlset>
