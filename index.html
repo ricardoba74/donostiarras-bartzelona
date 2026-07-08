@@ -435,7 +435,16 @@
     }
     .gal-filter:hover { border-color:var(--sky); }
     .gal-filter.active { background:var(--blue); border-color:var(--blue); color:#fff; }
-    .gal-item.gal-hide { display:none; }
+    .gal-item.gal-hide, .gal-item.gal-more-hide { display:none; }
+    .gal-more-wrap { display:flex; justify-content:center; margin-top:2.4rem; }
+    .gal-more-btn {
+      font-family:inherit; cursor:pointer; font-weight:600; font-size:.9rem;
+      background:transparent; border:1px solid rgba(255,255,255,.25); color:#fff;
+      border-radius:999px; padding:.75rem 2rem;
+      transition:background .25s ease, border-color .25s ease;
+    }
+    .gal-more-btn:hover, .gal-more-btn:focus-visible { background:rgba(0,87,168,.25); border-color:var(--sky); }
+    .gal-more-wrap.gal-hide { display:none; }
 
     /* Lightbox */
     .lb {
@@ -1169,6 +1178,9 @@
         <span class="cap">Siempre txuri-urdin</span>
       </button>
     </div>
+    <div class="gal-more-wrap rev">
+      <button class="gal-more-btn" id="gal-more-btn" type="button">Ver más fotos</button>
+    </div>
   </div>
 </section>
 
@@ -1593,16 +1605,33 @@ if (counter) {
   ioCnt.observe(counter);
 }
 
-// ── Galería: filtros ──
+// ── Galería: filtros + "ver más" ──
 const galItems = [...document.querySelectorAll('.gal-item')];
 const galFilters = [...document.querySelectorAll('.gal-filter')];
+const galMoreBtn = document.getElementById('gal-more-btn');
+const galMoreWrap = galMoreBtn.closest('.gal-more-wrap');
+const GAL_PAGE_SIZE = 18;
+let galExpanded = false;
+
+function updateGalVisibility() {
+  const visible = galItems.filter(it => !it.classList.contains('gal-hide'));
+  visible.forEach((it, i) => {
+    it.classList.toggle('gal-more-hide', !galExpanded && i >= GAL_PAGE_SIZE);
+  });
+  const hasMore = !galExpanded && visible.length > GAL_PAGE_SIZE;
+  galMoreWrap.classList.toggle('gal-hide', !hasMore);
+}
 function applyFilter(filter) {
   galItems.forEach(it => {
     it.classList.toggle('gal-hide', filter !== 'all' && it.dataset.category !== filter);
   });
   galFilters.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+  galExpanded = false;
+  updateGalVisibility();
 }
 galFilters.forEach(b => b.addEventListener('click', () => applyFilter(b.dataset.filter)));
+galMoreBtn.addEventListener('click', () => { galExpanded = true; updateGalVisibility(); });
+updateGalVisibility();
 
 // ── Lightbox ──
 const lb = document.getElementById('lb');
@@ -1618,7 +1647,7 @@ function lbShow(i) {
   lbCap.textContent = lbSet[lbIdx].dataset.cap || '';
 }
 function lbOpen(it) {
-  lbSet = galItems.filter(el => !el.classList.contains('gal-hide'));
+  lbSet = galItems.filter(el => !el.classList.contains('gal-hide') && !el.classList.contains('gal-more-hide'));
   lastFocus = document.activeElement;
   lbShow(lbSet.indexOf(it));
   lb.classList.add('open');
