@@ -7,7 +7,7 @@
   <!-- SEO -->
   <title>Peña Donostiarras Bartzelona | Peña Oficial de la Real Sociedad en Barcelona</title>
   <meta name="description" content="Peña oficial de la Real Sociedad en Barcelona desde 2014. Vemos todos los partidos de la Real en nuestro local de C/ Cantabria 79 (Sant Martí). Miembro de Realaren Lagun Taldeak. ¡Únete a la familia txuri-urdin!">
-  <link rel="canonical" href="https://ricardoba74.github.io/donostiarras-bartzelona/">
+  <link rel="canonical" href="https://donostiarrasbartzelona.com/">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0057A8">
   <meta name="geo.region" content="ES-B">
@@ -18,8 +18,8 @@
   <meta property="og:site_name" content="Peña Donostiarras Bartzelona">
   <meta property="og:title" content="Peña Donostiarras Bartzelona | Real Sociedad en Barcelona">
   <meta property="og:description" content="La peña oficial de la Real Sociedad en Barcelona desde 2014. Todos los partidos en nuestro local de C/ Cantabria 79. ¡Únete a la familia txuri-urdin!">
-  <meta property="og:url" content="https://ricardoba74.github.io/donostiarras-bartzelona/">
-  <meta property="og:image" content="https://ricardoba74.github.io/donostiarras-bartzelona/imgs/og-image.jpg">
+  <meta property="og:url" content="https://donostiarrasbartzelona.com/">
+  <meta property="og:image" content="https://donostiarrasbartzelona.com/imgs/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Socios de la Peña Donostiarras Bartzelona con el escudo de la peña">
@@ -30,7 +30,7 @@
   <meta name="twitter:site" content="@DonostiarrasBCN">
   <meta name="twitter:title" content="Peña Donostiarras Bartzelona | Real Sociedad en Barcelona">
   <meta name="twitter:description" content="La peña oficial de la Real Sociedad en Barcelona desde 2014. ¡Únete a la familia txuri-urdin!">
-  <meta name="twitter:image" content="https://ricardoba74.github.io/donostiarras-bartzelona/imgs/og-image.jpg">
+  <meta name="twitter:image" content="https://donostiarrasbartzelona.com/imgs/og-image.jpg">
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon-32.png">
@@ -52,13 +52,13 @@
     "@graph": [
       {
         "@type": "SportsClub",
-        "@id": "https://ricardoba74.github.io/donostiarras-bartzelona/#club",
+        "@id": "https://donostiarrasbartzelona.com/#club",
         "name": "Peña Donostiarras Bartzelona",
         "alternateName": "Donostiarras Bartzelona",
         "description": "Peña oficial de la Real Sociedad de Fútbol en Barcelona, fundada el 5 de octubre de 2014. Miembro de Realaren Lagun Taldeak, la agrupación oficial de peñas de la Real Sociedad.",
-        "url": "https://ricardoba74.github.io/donostiarras-bartzelona/",
-        "logo": "https://ricardoba74.github.io/donostiarras-bartzelona/imgs/favicon-512.png",
-        "image": "https://ricardoba74.github.io/donostiarras-bartzelona/imgs/og-image.jpg",
+        "url": "https://donostiarrasbartzelona.com/",
+        "logo": "https://donostiarrasbartzelona.com/imgs/favicon-512.png",
+        "image": "https://donostiarrasbartzelona.com/imgs/og-image.jpg",
         "foundingDate": "2014-10-05",
         "telephone": "+34618433942",
         "address": {
@@ -85,11 +85,11 @@
       },
       {
         "@type": "WebSite",
-        "@id": "https://ricardoba74.github.io/donostiarras-bartzelona/#website",
-        "url": "https://ricardoba74.github.io/donostiarras-bartzelona/",
+        "@id": "https://donostiarrasbartzelona.com/#website",
+        "url": "https://donostiarrasbartzelona.com/",
         "name": "Peña Donostiarras Bartzelona",
         "inLanguage": "es",
-        "publisher": { "@id": "https://ricardoba74.github.io/donostiarras-bartzelona/#club" }
+        "publisher": { "@id": "https://donostiarrasbartzelona.com/#club" }
       }
     ]
   }
@@ -425,6 +425,16 @@
       .gal-grid { grid-template-columns:1fr 1fr; grid-auto-rows:180px; }
       .gal-item .cap { transform:none; opacity:1; font-size:.72rem; padding:1.4rem .7rem .6rem; }
     }
+    .gal-filters { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.4rem; }
+    .gal-filter {
+      font-family:inherit; cursor:pointer;
+      background:rgba(0,87,168,.16); border:1px solid rgba(0,87,168,.45); border-radius:999px;
+      padding:.5rem 1.15rem; font-size:.82rem; color:var(--sky); font-weight:600;
+      transition:background .25s ease, color .25s ease, border-color .25s ease;
+    }
+    .gal-filter:hover { border-color:var(--sky); }
+    .gal-filter.active { background:var(--blue); border-color:var(--blue); color:#fff; }
+    .gal-item.gal-hide { display:none; }
 
     /* Lightbox */
     .lb {
@@ -724,39 +734,438 @@
   <div class="wrap">
     <p class="tag rev">Galería</p>
     <h2 class="sh rev" id="galeria-h">Momentos txuri-urdin</h2>
-    <p class="sp rev">Más de diez años de partidos, viajes, comidas y celebraciones. Haz clic en cualquier foto para verla en grande.</p>
+    <p class="sp rev">Más de diez años de partidos, viajes, comidas y celebraciones. Filtra por categoría o haz clic en cualquier foto para verla en grande.</p>
+    <div class="gal-filters rev" role="group" aria-label="Filtrar galería por categoría">
+      <button class="gal-filter active" data-filter="all">Todos</button>
+      <button class="gal-filter" data-filter="viajes">Viajes</button>
+      <button class="gal-filter" data-filter="copa">Copa</button>
+      <button class="gal-filter" data-filter="aniversarios">Aniversarios</button>
+      <button class="gal-filter" data-filter="encuentros">Encuentros</button>
+    </div>
     <div class="gal-grid">
-      <button class="gal-item tall rev" data-cap="Final de Copa · Atlético de Madrid vs Real Sociedad · 19 de abril de 2026">
+      <button class="gal-item wide rev" data-category="copa" data-cap="Peñas txuri-urdin ante el Nuevo Los Cármenes · Final de la Copa de la Reina, Granada, mayo de 2019">
+        <img src="imgs/pena-granada-2019-01.webp" alt="Aficionados de varias peñas de la Real Sociedad ante el estadio Nuevo Los Cármenes del Granada CF" width="1440" height="1080" loading="lazy">
+        <span class="cap">Rumbo a la final</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="Marcador de la final: Atlético de Madrid 1 - 2 Real Sociedad · Copa de la Reina, mayo de 2019">
+        <img src="imgs/pena-granada-2019-02.webp" alt="Marcador del estadio con el resultado Atlético de Madrid 1 - 2 Real Sociedad, goles de Esther y Nahikari, Copa de la Reina 2019" width="1600" height="1200" loading="lazy">
+        <span class="cap">Primer título femenino</span>
+      </button>
+      <button class="gal-item tall rev" data-category="copa" data-cap="Con el trofeo recién conquistado · Granada, mayo de 2019">
+        <img src="imgs/pena-granada-2019-03.webp" alt="Familia de la peña posando con el trofeo de la Copa de la Reina junto a jugadoras de la Real Sociedad" width="1200" height="1600" loading="lazy">
+        <span class="cap">Con la Copa de la Reina</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="Celebrando en el campo tras el título · Granada, mayo de 2019">
+        <img src="imgs/pena-granada-2019-04.webp" alt="Socios de la peña celebrando en el césped del estadio tras la victoria en la final de la Copa de la Reina 2019" width="1600" height="1200" loading="lazy">
+        <span class="cap">Celebración en el campo</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="El trofeo, de cerca · Granada, mayo de 2019">
+        <img src="imgs/pena-granada-2019-05.webp" alt="Familia de la peña con el trofeo de la Copa de la Reina de cerca, junto a una jugadora de la Real Sociedad" width="1600" height="1200" loading="lazy">
+        <span class="cap">El primer título</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="La Real femenina levanta su primer título por televisión · Mayo de 2019">
+        <img src="imgs/pena-granada-2019-06.webp" alt="Captura de la retransmisión televisiva del momento en que la Real Sociedad femenina levanta la Copa de la Reina 2019" width="1600" height="900" loading="lazy">
+        <span class="cap">Levantando el trofeo</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Previa en un bar de Graz · Liga Europa, noviembre de 2022">
+        <img src="imgs/pena-graz-2022-01.webp" alt="Socios de la peña en un bar de Graz con camisetas de la Real Sociedad y una ikurriña, durante el viaje a la Liga Europa" width="1600" height="1200" loading="lazy">
+        <span class="cap">Previa en Graz</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Visitando Graz antes del partido · Noviembre de 2022">
+        <img src="imgs/pena-graz-2022-02.webp" alt="Socios de la peña en una cúpula acristalada de un jardín botánico de Graz durante el viaje europeo" width="1600" height="1200" loading="lazy">
+        <span class="cap">De turismo por Graz</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="La bufanda de la peña, en la retransmisión del partido · Graz, noviembre de 2022">
+        <img src="imgs/pena-graz-2022-03.webp" alt="Retransmisión de televisión del partido en Graz con una bufanda de la Peña Donostiarras visible en la grada" width="1600" height="900" loading="lazy">
+        <span class="cap">En la tele, desde Graz</span>
+      </button>
+      <button class="gal-item wide rev" data-category="viajes" data-cap="Grada visitante en el estadio de Graz · Liga Europa, noviembre de 2022">
+        <img src="imgs/pena-graz-2022-04.webp" alt="Grupo numeroso de socios en la grada del estadio de Graz de noche con bufandas de la Real Sociedad" width="1600" height="739" loading="lazy">
+        <span class="cap">Noche europea en Graz</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Tras el partido en Graz · Noviembre de 2022">
+        <img src="imgs/pena-graz-2022-05.webp" alt="Socios de la peña en las escaleras del estadio de Graz de noche con la bufanda Donostiarras Bartzelona" width="1600" height="739" loading="lazy">
+        <span class="cap">Tras el pitido final</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Noche de previa en el centro de Graz · Noviembre de 2022">
+        <img src="imgs/pena-graz-2022-06.webp" alt="Dos socios de la peña con la bufanda Donostiarras Bartzelona en una plaza de Graz de noche" width="1600" height="739" loading="lazy">
+        <span class="cap">Noche en Graz</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Ambiente de previa junto al Flann O&#x27;Brien Irish Pub · Graz, noviembre de 2022">
+        <img src="imgs/pena-graz-2022-07.webp" alt="Aficionados de la Real Sociedad reunidos junto a un pub irlandés en Graz antes del partido de Liga Europa" width="1600" height="739" loading="lazy">
+        <span class="cap">Ambiente de previa</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Ante el Rathaus, el ayuntamiento de Graz · Noviembre de 2022">
+        <img src="imgs/pena-graz-2022-08.webp" alt="Socios de la peña con la bufanda de la Real Sociedad ante el ayuntamiento de Graz (Rathaus), de día" width="1599" height="899" loading="lazy">
+        <span class="cap">Ante el Rathaus</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Bufanda de la peña bien lejos de Graz">
+        <img src="imgs/pena-graz-2022-09.webp" alt="Socio de la peña con la bufanda Donostiarras Bartzelona extendida junto a una piscina" width="1080" height="1071" loading="lazy">
+        <span class="cap">Bufanda viajera</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="Con la bufanda de la peña por las calles de Donostia">
+        <img src="imgs/pena-graz-2022-10.webp" alt="Socio con la bufanda Donostiarras Bartzelona al cuello paseando por el centro histórico de Donostia" width="738" height="1600" loading="lazy">
+        <span class="cap">Por las calles de Donostia</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Con la bufanda de la peña en La Concha">
+        <img src="imgs/pena-graz-2022-11.webp" alt="Socio con la bufanda de la peña en el paseo de La Concha de Donostia-San Sebastián" width="1080" height="1137" loading="lazy">
+        <span class="cap">Bufanda en La Concha</span>
+      </button>
+      <button class="gal-item tall rev" data-category="encuentros" data-cap="Con una jugadora de la Real Sociedad femenina">
+        <img src="imgs/pena-graz-2022-12.webp" alt="Socio de la peña junto a una jugadora de la Real Sociedad femenina sujetando la bufanda Donostiarras Bartzelona" width="950" height="1600" loading="lazy">
+        <span class="cap">Con la Real femenina</span>
+      </button>
+      <button class="gal-item tall rev" data-category="encuentros" data-cap="Con la Real Sociedad femenina, bufanda en mano">
+        <img src="imgs/pena-graz-2022-13.webp" alt="Jugadora de la Real Sociedad femenina y socio de la peña sujetando la bufanda en un campo de entrenamiento" width="958" height="1600" loading="lazy">
+        <span class="cap">Bufanda con las jugadoras</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="Los más jóvenes de la peña, con la bufanda">
+        <img src="imgs/pena-graz-2022-14.webp" alt="Socio de la peña con dos jóvenes socios sujetando la bufanda junto a un campo de fútbol" width="1080" height="1481" loading="lazy">
+        <span class="cap">La cantera de la peña</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="Jugadoras de la Real femenina con la bufanda de la peña">
+        <img src="imgs/pena-graz-2022-15.webp" alt="Tres jugadoras de la Real Sociedad femenina sujetando la bufanda de la Peña Donostiarras Bartzelona" width="810" height="493" loading="lazy">
+        <span class="cap">Bufanda con la plantilla</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="Otra jugadora con los colores de la peña">
+        <img src="imgs/pena-graz-2022-16.webp" alt="Jugadora de la Real Sociedad femenina sujetando la bufanda de la Peña Donostiarras Bartzelona en un hotel" width="959" height="530" loading="lazy">
+        <span class="cap">Con los colores de la peña</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="Dos jugadoras de la Real femenina con la bufanda">
+        <img src="imgs/pena-graz-2022-17.webp" alt="Dos jugadoras de la Real Sociedad femenina sujetando la bufanda de la peña junto a un ascensor de hotel" width="1036" height="743" loading="lazy">
+        <span class="cap">Dos jugadoras, una bufanda</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="Encuentro con la Real Sociedad femenina">
+        <img src="imgs/pena-graz-2022-18.webp" alt="Jugadora de la Real Sociedad femenina y socio de la peña sujetando la bufanda en el exterior de un hotel" width="1001" height="515" loading="lazy">
+        <span class="cap">Encuentro con la plantilla</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="La bufanda de la peña, en buenas manos">
+        <img src="imgs/pena-graz-2022-19.webp" alt="Jugadora de la Real Sociedad femenina sujetando en solitario la bufanda de la Peña Donostiarras Bartzelona" width="1080" height="797" loading="lazy">
+        <span class="cap">En buenas manos</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="Un momento de descanso con la bufanda de la peña">
+        <img src="imgs/pena-graz-2022-20.webp" alt="Socio de la peña con la bufanda Donostiarras Bartzelona en la terraza de una cafetería" width="1200" height="1600" loading="lazy">
+        <span class="cap">Bufanda de sobremesa</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="La bufanda de la peña, firmada por los socios">
+        <img src="imgs/pena-graz-2022-21.webp" alt="Socio con la bufanda de la peña llena de firmas en el interior de un restaurante con la bandera del Celta de Vigo" width="1600" height="1200" loading="lazy">
+        <span class="cap">Bufanda de firmas</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="Dos socios, la misma bufanda">
+        <img src="imgs/pena-graz-2022-22.webp" alt="Dos socios de la peña posando juntos con la bufanda Donostiarras Bartzelona en un interior" width="900" height="1600" loading="lazy">
+        <span class="cap">Compañeros de peña</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="Sobremesa de socios con la bufanda de la peña">
+        <img src="imgs/pena-graz-2022-23.webp" alt="Dos socios de la peña con la bufanda Donostiarras Bartzelona en una terraza exterior" width="900" height="1600" loading="lazy">
+        <span class="cap">Sobremesa txuri-urdin</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="En la puerta del local de la peña · Visita de Juan Gómez, noviembre de 2022">
+        <img src="imgs/pena-juangomez-2022-01.webp" alt="Socios de la Peña Donostiarras Bartzelona posando bajo el rótulo de su local en Barcelona" width="1125" height="1125" loading="lazy">
+        <span class="cap">En la puerta del local</span>
+      </button>
+      <button class="gal-item wide rev" data-category="encuentros" data-cap="Foto de familia en el local de la peña · Noviembre de 2022">
+        <img src="imgs/pena-juangomez-2022-02.webp" alt="Grupo amplio de socios de la Peña Donostiarras Bartzelona en la puerta de su local en Barcelona" width="1600" height="900" loading="lazy">
+        <span class="cap">Foto de familia</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="Juan Gómez, exjugador de la Real Sociedad, con socios de la peña · Noviembre de 2022">
+        <img src="imgs/pena-juangomez-2022-03.webp" alt="Juan Gómez, exjugador argentino de la Real Sociedad, con socios de la peña y jóvenes con traje regional vasco" width="1600" height="737" loading="lazy">
+        <span class="cap">Visita de Juan Gómez</span>
+      </button>
+      <button class="gal-item tall rev" data-category="encuentros" data-cap="Recuerdo conmemorativo con Juan Gómez · Noviembre de 2022">
+        <img src="imgs/pena-juangomez-2022-04.webp" alt="Juan Gómez y un socio de la peña sujetando una placa conmemorativa y un trofeo de recuerdo con la ikurriña" width="1200" height="1600" loading="lazy">
+        <span class="cap">Recuerdo con Juan Gómez</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="Sobremesa con Juan Gómez, exjugador de la Real Sociedad">
+        <img src="imgs/pena-juangomez-2022-05.webp" alt="Juan Gómez con un grupo de socios de la peña en la terraza de un bar de noche" width="1600" height="1200" loading="lazy">
+        <span class="cap">Sobremesa con el exjugador</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Con David Silva · Mallorca, marzo de 2023">
+        <img src="imgs/pena-mallorca-2023-01.webp" alt="Socio de la peña junto al futbolista David Silva de la Real Sociedad" width="462" height="462" loading="lazy">
+        <span class="cap">Con David Silva</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Bandera de la peña en el Son Moix · Marzo de 2023">
+        <img src="imgs/pena-mallorca-2023-02.webp" alt="Socios de la peña con boina desplegando la bandera de la Peña Donostiarras Bartzelona en el Son Moix de Mallorca" width="1440" height="1440" loading="lazy">
+        <span class="cap">Bandera en el Son Moix</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Vistas del puerto de Palma antes del partido · Marzo de 2023">
+        <img src="imgs/pena-mallorca-2023-03.webp" alt="Socios de la peña con bufanda y vistas panorámicas del puerto de Palma de Mallorca" width="1600" height="1200" loading="lazy">
+        <span class="cap">Vistas de Palma</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Bandera de la peña frente al puerto deportivo de Palma">
+        <img src="imgs/pena-mallorca-2023-04.webp" alt="Socios de la peña con la bandera de la Peña Donostiarras Bartzelona y el puerto deportivo de Palma al fondo" width="1600" height="1200" loading="lazy">
+        <span class="cap">Bandera frente al puerto</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Con la mascota del Real Mallorca · Marzo de 2023">
+        <img src="imgs/pena-mallorca-2023-05.webp" alt="Socios de la peña junto a la mascota del Real Mallorca en una zona en obras del estadio de Son Moix" width="826" height="539" loading="lazy">
+        <span class="cap">Con la mascota rival</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Grada visitante compartida con la Peña Bizkaia Txuriurdin · Marzo de 2023">
+        <img src="imgs/pena-mallorca-2023-06.webp" alt="Grada del estadio de Son Moix con aficionados de la Real Sociedad y bufandas de la Peña Bizkaia Txuriurdin" width="1600" height="1200" loading="lazy">
+        <span class="cap">Grada visitante</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="El Son Moix, minutos antes del partido · Marzo de 2023">
+        <img src="imgs/pena-mallorca-2023-07.webp" alt="Vista panorámica del campo del Son Moix vacío antes del partido entre el Mallorca y la Real Sociedad" width="1080" height="1080" loading="lazy">
+        <span class="cap">Minutos antes del partido</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="El Reale Arena, en plenas obras de reforma · Mayo de 2023">
+        <img src="imgs/pena-donosti-2023-01.webp" alt="Exterior del Reale Arena (Anoeta) envuelto en su lona azul durante las obras de reforma" width="1600" height="900" loading="lazy">
+        <span class="cap">El Reale Arena en obras</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="El túnel de vestuarios del Reale Arena">
+        <img src="imgs/pena-donosti-2023-02.webp" alt="Túnel de vestuarios visto desde la grada del Reale Arena, con los asientos azules vacíos" width="1600" height="1200" loading="lazy">
+        <span class="cap">Túnel de vestuarios</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="El escudo de la Real, en cada rincón del estadio">
+        <img src="imgs/pena-donosti-2023-03.webp" alt="Escudo de la Real Sociedad estampado en el suelo de un pasillo del Reale Arena" width="1600" height="1200" loading="lazy">
+        <span class="cap">El escudo de la Real</span>
+      </button>
+      <button class="gal-item wide rev" data-category="viajes" data-cap="Bandera de la peña sobre el césped del Reale Arena · Mayo de 2023">
+        <img src="imgs/pena-donosti-2023-04.webp" alt="Grupo de socios con la bandera de la Peña Donostiarras Bartzelona sobre el césped del Reale Arena" width="1600" height="1200" loading="lazy">
+        <span class="cap">Bandera sobre el césped</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="El Reale Arena, vacío antes del partido">
+        <img src="imgs/pena-donosti-2023-05.webp" alt="Vista panorámica del campo del Reale Arena vacío con el marcador 1909 iluminado en la grada" width="1600" height="1200" loading="lazy">
+        <span class="cap">El estadio en calma</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="De visita en las oficinas del club · Donostia, mayo de 2023">
+        <img src="imgs/pena-donosti-2023-06.webp" alt="Socios de la peña en la calle ante las oficinas de la Real Sociedad con una taza de la peña" width="1528" height="1528" loading="lazy">
+        <span class="cap">Visita a las oficinas</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="Comida de peña en Donostia · Mayo de 2023">
+        <img src="imgs/pena-donosti-2023-07.webp" alt="Comida de un grupo numeroso de socios de la peña, incluidos niños, en un restaurante de Donostia" width="1200" height="1600" loading="lazy">
+        <span class="cap">Comida en Donostia</span>
+      </button>
+      <button class="gal-item wide rev" data-category="viajes" data-cap="Grada del Reale Arena momentos antes del partido · Mayo de 2023">
+        <img src="imgs/pena-donosti-2023-08.webp" alt="Socios con bufandas y la bandera de la peña en la grada del Reale Arena momentos antes de un partido" width="1600" height="1200" loading="lazy">
+        <span class="cap">Minutos antes del pitido</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Selfie de grupo con la bandera de la peña en la grada">
+        <img src="imgs/pena-donosti-2023-09.webp" alt="Selfie de grupo en la grada cubierta del Reale Arena con la bandera de la Peña Donostiarras Bartzelona" width="1600" height="1200" loading="lazy">
+        <span class="cap">Selfie en la grada</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Previa de partido en un bar de Donostia · Mayo de 2023">
+        <img src="imgs/pena-donosti-2023-10.webp" alt="Grupo de socios, incluidos niños, en la entrada de un bar de Donostia antes del partido" width="1600" height="900" loading="lazy">
+        <span class="cap">Previa en Donostia</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Brindis de peña en un bar histórico de Donostia">
+        <img src="imgs/pena-donosti-2023-11.webp" alt="Socios de la peña brindando con cerveza y vino en el interior de un bar histórico de Donostia" width="1600" height="1200" loading="lazy">
+        <span class="cap">Brindis txuri-urdin</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="En el paseo de La Concha · Donostia, mayo de 2023">
+        <img src="imgs/pena-donosti-2023-12.webp" alt="Socios de la peña con la bufanda Donostiarras Bartzelona en el paseo de La Concha, con la bahía al fondo" width="1600" height="1200" loading="lazy">
+        <span class="cap">En el paseo de La Concha</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Encuentro con la Peña Galicia Txuri Urdin · Junio de 2023">
+        <img src="imgs/pena-galicia-2023-01.webp" alt="Grupo de socios con camiseta de la Real Sociedad en el interior de un bar durante el encuentro con la Peña Galicia" width="1600" height="901" loading="lazy">
+        <span class="cap">Encuentro entre peñas</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="En la terraza, celebrando el hermanamiento">
+        <img src="imgs/pena-galicia-2023-02.webp" alt="Socios con bufanda de la Peña Galicia en una terraza durante el acto de hermanamiento" width="1600" height="901" loading="lazy">
+        <span class="cap">Celebrando la hermandad</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Entrega de recuerdos en el aniversario de la Peña Galicia · Junio de 2023">
+        <img src="imgs/pena-galicia-2023-03.webp" alt="Socios en un escenario recibiendo un obsequio conmemorativo durante el aniversario de la Peña Galicia Txuri Urdin" width="1600" height="901" loading="lazy">
+        <span class="cap">Entrega de recuerdos</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Abrazo entre peñas hermanas · Junio de 2023">
+        <img src="imgs/pena-galicia-2023-04.webp" alt="Socios abrazándose en el escenario durante el acto del aniversario de la Peña Galicia Txuri Urdin" width="1600" height="1200" loading="lazy">
+        <span class="cap">Abrazo entre peñas</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Brindis en el aniversario de la Peña Galicia">
+        <img src="imgs/pena-galicia-2023-05.webp" alt="Socios brindando con cerveza en la sala de la celebración del aniversario de la Peña Galicia Txuri Urdin" width="1600" height="1200" loading="lazy">
+        <span class="cap">Brindis de aniversario</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Foto de familia entre las dos peñas · Junio de 2023">
+        <img src="imgs/pena-galicia-2023-06.webp" alt="Foto de grupo numeroso de socios con bufandas de la Peña Galicia Txuri Urdin" width="1600" height="901" loading="lazy">
+        <span class="cap">Foto de familia</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="La bufanda del hermanamiento, en primer plano">
+        <img src="imgs/pena-galicia-2023-07.webp" alt="Otra foto de grupo numeroso con la bufanda Peña Galicia Txuri Urdin en primer plano" width="1600" height="901" loading="lazy">
+        <span class="cap">Bufanda del hermanamiento</span>
+      </button>
+      <button class="gal-item wide rev" data-category="aniversarios" data-cap="Foto de familia del hermanamiento con la Peña Galicia Txuri Urdin · Junio de 2023">
+        <img src="imgs/pena-galicia-2023-08.webp" alt="Foto de familia completa del acto de hermanamiento con la Peña Galicia Txuri Urdin, con bufandas desplegadas" width="1600" height="1200" loading="lazy">
+        <span class="cap">Hermanamiento de peñas</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="En la grada, antes de la final · Zaragoza, mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-01.webp" alt="Socios de la peña en la grada del estadio de Zaragoza antes de la final de la Copa de la Reina 2024" width="1600" height="1200" loading="lazy">
+        <span class="cap">Antes de la final</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="Coreografía previa a la final de la Copa de la Reina · Mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-02.webp" alt="Coreografía de mosaico desplegada sobre el césped antes de la final de la Copa de la Reina 2024 en Zaragoza" width="1600" height="1600" loading="lazy">
+        <span class="cap">Coreografía de la final</span>
+      </button>
+      <button class="gal-item tall rev" data-category="copa" data-cap="Con el plato de subcampeonas de la Copa de la Reina · Zaragoza, mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-03.webp" alt="Socio y jugadora de la Real Sociedad con el plato de subcampeonas de la Copa de la Reina 2023-2024" width="1200" height="1600" loading="lazy">
+        <span class="cap">Subcampeonas de Copa</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="Concentración de socios en Zaragoza · Mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-04.webp" alt="Socios con la bufanda Donostiarras Bartzelona ante el Hotel Romareda de Zaragoza, de noche" width="1600" height="1600" loading="lazy">
+        <span class="cap">Noche previa en Zaragoza</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="La bandera de la peña ante la Basílica del Pilar · Zaragoza, mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-05.webp" alt="Socios con la bandera de la Peña Donostiarras Bartzelona en un puente sobre el Ebro, con la Basílica del Pilar al fondo" width="1600" height="1200" loading="lazy">
+        <span class="cap">Ante el Pilar</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="De turismo en Zaragoza antes de la final · Mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-06.webp" alt="Socios con la bandera de la peña ante la fachada de la Basílica del Pilar de Zaragoza" width="1600" height="1200" loading="lazy">
+        <span class="cap">Turismo en Zaragoza</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="Previa de la final en una terraza de Zaragoza">
+        <img src="imgs/pena-zaragoza-2024-07.webp" alt="Socios en una terraza de Zaragoza durante la previa de la final de la Copa de la Reina 2024" width="1600" height="1200" loading="lazy">
+        <span class="cap">Previa de la final</span>
+      </button>
+      <button class="gal-item wide rev" data-category="copa" data-cap="En el photocall oficial de la Copa de la Reina · Zaragoza, mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-08.webp" alt="Socios con la bandera de la peña y el trofeo en el photocall oficial de la Copa de la Reina 2023/24" width="1600" height="1200" loading="lazy">
+        <span class="cap">Photocall de la final</span>
+      </button>
+      <button class="gal-item tall rev" data-category="copa" data-cap="Entrevista de radio a un socio de la peña · Zaragoza, mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-09.webp" alt="Socio con bufanda de la peña siendo entrevistado por una periodista de radio en Zaragoza" width="1200" height="1600" loading="lazy">
+        <span class="cap">Entrevista en Zaragoza</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="Apoyando a la Real durante la final · Zaragoza, mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-10.webp" alt="Socios con la bandera de la peña y una bandera Gora Erreala en la grada durante la final de la Copa de la Reina" width="1600" height="1200" loading="lazy">
+        <span class="cap">Apoyo en la final</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="Selfie en la grada, previa de la final">
+        <img src="imgs/pena-zaragoza-2024-11.webp" alt="Selfie de socios en la grada del estadio de Zaragoza antes de la final de la Copa de la Reina" width="1600" height="1200" loading="lazy">
+        <span class="cap">Selfie previo a la final</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="Calentamiento antes de la final · Zaragoza, mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-12.webp" alt="Jugadoras de la Real Sociedad femenina calentando en el campo antes de la final de la Copa de la Reina 2024" width="439" height="351" loading="lazy">
+        <span class="cap">Calentamiento previo</span>
+      </button>
+      <button class="gal-item rev" data-category="copa" data-cap="La Basílica del Pilar, iluminada de noche">
+        <img src="imgs/pena-zaragoza-2024-13.webp" alt="Socios de la peña de noche ante la Basílica del Pilar iluminada en Zaragoza" width="1599" height="1200" loading="lazy">
+        <span class="cap">El Pilar de noche</span>
+      </button>
+      <button class="gal-item tall rev" data-category="copa" data-cap="Con la bufanda de la peña en la grada · Mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-14.webp" alt="Socios con la bufanda Donostiarras Bartzelona en la grada del estadio de Zaragoza" width="1200" height="1600" loading="lazy">
+        <span class="cap">Bufanda en la grada</span>
+      </button>
+      <button class="gal-item tall rev" data-category="copa" data-cap="Marcador final de la Copa de la Reina · Zaragoza, mayo de 2024">
+        <img src="imgs/pena-zaragoza-2024-15.webp" alt="Marcador del estadio al final de la Copa de la Reina 2024: FC Barcelona 8 - Real Sociedad 0" width="1200" height="1600" loading="lazy">
+        <span class="cap">Marcador final</span>
+      </button>
+      <button class="gal-item wide rev" data-category="viajes" data-cap="Encuentro con la Penya Immortal Girona">
+        <img src="imgs/pena-girona-2024-01.webp" alt="Socios de la Peña Donostiarras Bartzelona junto a la Penya Immortal Girona ante un bar de Girona" width="1600" height="738" loading="lazy">
+        <span class="cap">Encuentro entre peñas</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Comida de peña en Girona antes del partido">
+        <img src="imgs/pena-girona-2024-02.webp" alt="Socios de la peña comiendo en una terraza de Girona antes del partido" width="1600" height="1200" loading="lazy">
+        <span class="cap">Comida antes del partido</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Junto al autobús del equipo en Girona">
+        <img src="imgs/pena-girona-2024-03.webp" alt="Socios de la peña con bufandas ante el autobús oficial de la Real Sociedad en Girona" width="1600" height="900" loading="lazy">
+        <span class="cap">Junto al autobús del equipo</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Brindis de socios en Girona">
+        <img src="imgs/pena-girona-2024-04.webp" alt="Socios de la peña brindando con cerveza en una terraza de Girona" width="1600" height="900" loading="lazy">
+        <span class="cap">Brindis en Girona</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="La bandera de la peña sobre el río Onyar, Girona">
+        <img src="imgs/pena-girona-2024-05.webp" alt="Socios con la bandera de la peña y una bufanda de la Real Sociedad en un puente sobre el río Onyar en Girona" width="1200" height="1600" loading="lazy">
+        <span class="cap">Puente sobre el Onyar</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Sobremesa de peña en Girona">
+        <img src="imgs/pena-girona-2024-06.webp" alt="Socios de la peña en un restaurante de Girona con decoración vegetal" width="1408" height="1056" loading="lazy">
+        <span class="cap">Sobremesa en Girona</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="Ante la Catedral de Girona">
+        <img src="imgs/pena-girona-2024-07.webp" alt="Socios con las banderas de la peña y de la Real Sociedad en la escalinata de la Catedral de Girona" width="1200" height="1600" loading="lazy">
+        <span class="cap">Ante la Catedral de Girona</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="Noche de partido en Montilivi">
+        <img src="imgs/pena-girona-2024-08.webp" alt="Vista nocturna del estadio de Montilivi antes de un partido entre el Girona FC y la Real Sociedad" width="1200" height="1600" loading="lazy">
+        <span class="cap">Noche en Montilivi</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Otra pose junto al río Onyar, Girona">
+        <img src="imgs/pena-girona-2024-09.webp" alt="Socios con la bandera de la peña y una bufanda de la Real Sociedad en el puente sobre el Onyar en Girona" width="1600" height="1200" loading="lazy">
+        <span class="cap">Bandera junto al Onyar</span>
+      </button>
+      <button class="gal-item tall rev" data-category="aniversarios" data-cap="El local de la peña, vestido de 10º aniversario · Junio de 2024">
+        <img src="imgs/pena-decimo-2024-01.webp" alt="Socios de la peña en su local decorado con bufandas conmemorativas del 10º aniversario y banderines" width="1200" height="1600" loading="lazy">
+        <span class="cap">El local, de aniversario</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Vino y licores de la peña en la comida de aniversario">
+        <img src="imgs/pena-decimo-2024-02.webp" alt="Socios posando junto a una mesa con vino y licores de la peña durante la comida del 10º aniversario" width="823" height="824" loading="lazy">
+        <span class="cap">Vino de la peña</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Placa conmemorativa del 10º aniversario · Junio de 2024">
+        <img src="imgs/pena-decimo-2024-03.webp" alt="Socios en un restaurante mostrando una placa conmemorativa durante la celebración del 10º aniversario" width="1600" height="1384" loading="lazy">
+        <span class="cap">Placa de aniversario</span>
+      </button>
+      <button class="gal-item tall rev" data-category="aniversarios" data-cap="Regalo de aniversario: una camiseta retro de la Real">
+        <img src="imgs/pena-decimo-2024-04.webp" alt="Socios con una camiseta retro de la Real Sociedad recién desempaquetada durante la celebración del aniversario" width="1076" height="1600" loading="lazy">
+        <span class="cap">Regalo de aniversario</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Comida de celebración del 10º aniversario">
+        <img src="imgs/pena-decimo-2024-05.webp" alt="Grupo de socios en una comida de celebración del 10º aniversario de la peña" width="1600" height="1384" loading="lazy">
+        <span class="cap">Comida de aniversario</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Foto de familia por el 10º aniversario · Junio de 2024">
+        <img src="imgs/pena-decimo-2024-06.webp" alt="Grupo numeroso de socios en el local de la peña con banderas conmemorativas del 10º aniversario" width="1600" height="1384" loading="lazy">
+        <span class="cap">Foto de familia</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Más recuerdos del 10º aniversario de la peña">
+        <img src="imgs/pena-decimo-2024-07.webp" alt="Socios en un restaurante mostrando una placa conmemorativa enmarcada del aniversario" width="1151" height="667" loading="lazy">
+        <span class="cap">Recuerdos de aniversario</span>
+      </button>
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Brindis con el vino de la peña · 10º aniversario, junio de 2024">
+        <img src="imgs/pena-decimo-2024-08.webp" alt="Socios posando con botellas de vino de la peña en un restaurante durante el 10º aniversario" width="1337" height="708" loading="lazy">
+        <span class="cap">Brindis de aniversario</span>
+      </button>
+      <button class="gal-item wide rev" data-category="viajes" data-cap="Encuentro de peñas en Oviedo · Agosto de 2025">
+        <img src="imgs/pena-oviedo-2025-01.webp" alt="Grupo numeroso de socios en una calle de Oviedo con banderas y bufandas de varias peñas de la Real Sociedad" width="1600" height="1200" loading="lazy">
+        <span class="cap">Encuentro de peñas en Oviedo</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="Con la Peña Galicia Txuri Urdin en Oviedo">
+        <img src="imgs/pena-oviedo-2025-02.webp" alt="Socios con la bandera de la Peña Galicia Txuri Urdin en una calle histórica de Oviedo" width="1200" height="1600" loading="lazy">
+        <span class="cap">Con la Peña Galicia</span>
+      </button>
+      <button class="gal-item tall rev" data-category="viajes" data-cap="Reencuentro con la Peña Galicia Txuri Urdin · Oviedo, agosto de 2025">
+        <img src="imgs/pena-oviedo-2025-03.webp" alt="Socios con la bandera de la Peña Galicia Txuri Urdin en otra calle histórica de Oviedo" width="1200" height="1600" loading="lazy">
+        <span class="cap">Reencuentro de peñas</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Paseo por el centro de Oviedo · Agosto de 2025">
+        <img src="imgs/pena-oviedo-2025-04.webp" alt="Socios de la peña con la bufanda Donostiarras Bartzelona junto a un edificio histórico de Oviedo" width="1541" height="1156" loading="lazy">
+        <span class="cap">Paseo por Oviedo</span>
+      </button>
+      <button class="gal-item rev" data-category="viajes" data-cap="Cena de sidrería con socios de la peña · Oviedo, agosto de 2025">
+        <img src="imgs/pena-oviedo-2025-05.webp" alt="Cena de socios de la peña, con niños, en una sidrería asturiana durante el viaje a Oviedo" width="1600" height="721" loading="lazy">
+        <span class="cap">Cena de sidrería</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="Reunión de socios en el local de la peña · Marzo de 2023">
+        <img src="imgs/pena-badallo-2023-01.webp" alt="Socios de la peña reunidos en su local con banderas y fotos de equipo en las paredes" width="1600" height="1600" loading="lazy">
+        <span class="cap">Reunión en el local</span>
+      </button>
+      <button class="gal-item tall rev" data-category="encuentros" data-cap="Con el periodista Óscar Badallo, corresponsal de MARCA · Marzo de 2023">
+        <img src="imgs/pena-badallo-2023-02.webp" alt="Socios de la peña con el periodista Óscar Badallo, corresponsal de MARCA, en un bar de noche" width="1197" height="1600" loading="lazy">
+        <span class="cap">Con Óscar Badallo</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="En la grada, antes del partido">
+        <img src="imgs/pena-badallo-2023-03.webp" alt="Selfie de socios de la peña en la grada de un estadio antes de un partido" width="1600" height="1200" loading="lazy">
+        <span class="cap">En la grada</span>
+      </button>
+      <button class="gal-item rev" data-category="encuentros" data-cap="En el local de la peña, entre recuerdos txuri-urdin">
+        <img src="imgs/pena-badallo-2023-04.webp" alt="Socios de la peña en su local junto a la bandera Peña Donostiarra Bartzelona y fotos de equipo enmarcadas" width="1600" height="900" loading="lazy">
+        <span class="cap">Entre recuerdos de la peña</span>
+      </button>
+      <button class="gal-item wide rev" data-category="encuentros" data-cap="El local de la peña, lleno de historia txuri-urdin">
+        <img src="imgs/pena-badallo-2023-05.webp" alt="Socios de la peña en su local, con la camiseta enmarcada Peña Donostiarra Bartzelona y recuerdos en las paredes" width="1600" height="900" loading="lazy">
+        <span class="cap">El local de la peña</span>
+      </button>
+      <button class="gal-item tall rev" data-category="copa" data-cap="Final de Copa · Atlético de Madrid vs Real Sociedad · 19 de abril de 2026">
         <img src="imgs/copa-final.webp" alt="Socios de la Peña Donostiarras Bartzelona con la bufanda de la Final de Copa 2026 entre Atlético de Madrid y Real Sociedad" width="750" height="450" loading="lazy">
         <span class="cap">Final de Copa 2026</span>
       </button>
-      <button class="gal-item rev" data-cap="Día de partido en el local de C/ Cantabria 79">
-        <img src="imgs/local-socios.webp" alt="Socios de la peña viendo un partido de la Real Sociedad en el local de Barcelona" width="572" height="381" loading="lazy">
-        <span class="cap">Día de partido en el local</span>
-      </button>
-      <button class="gal-item rev" data-cap="Cena del 10º aniversario · Barcelona, junio 2024">
+      <button class="gal-item rev" data-category="aniversarios" data-cap="Cena del 10º aniversario · Barcelona, junio 2024">
         <img src="imgs/aniversario.webp" alt="Socios de la peña en la cena del décimo aniversario en Barcelona, junio de 2024" width="1280" height="720" loading="lazy">
         <span class="cap">10º aniversario · 2024</span>
       </button>
-      <button class="gal-item rev" data-cap="El local decorado con bufandas y camisetas de la Real Sociedad">
-        <img src="imgs/pena-local-partido.webp" alt="Interior del local de la peña decorado con bufandas, banderas y camisetas de la Real Sociedad" width="572" height="381" loading="lazy">
-        <span class="cap">Nuestro local</span>
-      </button>
-      <button class="gal-item rev" data-cap="Grupo de socios con la bufanda conmemorativa de la Final de Copa 2026 y la bandera de la peña">
-        <img src="imgs/pena-copa-grupo.webp" alt="Socios de la peña con la bandera Peña Donostiarras Bartzelona y la bufanda de la Final de Copa 2026" width="750" height="450" loading="lazy">
-        <span class="cap">Rumbo a la final</span>
-      </button>
-      <button class="gal-item rev" data-cap="Comida de la peña en Barcelona">
-        <img src="imgs/pena-comida.webp" alt="Socios de la peña en una comida de hermandad en Barcelona" width="1280" height="720" loading="lazy">
-        <span class="cap">Comida de la peña</span>
-      </button>
-      <button class="gal-item wide rev" data-cap="Socios de la peña en el local con los colores txuri-urdin">
+      <button class="gal-item wide rev" data-category="encuentros" data-cap="Socios de la peña en el local con los colores txuri-urdin">
         <img src="imgs/socios.webp" alt="Grupo de socios de la Peña Donostiarras Bartzelona en el local con camisetas de la Real Sociedad" width="1280" height="720" loading="lazy" style="object-position:center top;">
         <span class="cap">Siempre txuri-urdin</span>
-      </button>
-      <button class="gal-item rev" data-cap="Terraceo txuri-urdin en Barcelona">
-        <img src="imgs/pena-terraza.webp" alt="Cuatro socios de la peña compartiendo mesa en un restaurante de Barcelona" width="1280" height="720" loading="lazy">
-        <span class="cap">Entre amigos</span>
       </button>
     </div>
   </div>
@@ -856,9 +1265,51 @@
         </div>
         <div class="tl-item rev">
           <div class="tl-dot"></div>
+          <p class="tl-year">Mayo 2019</p>
+          <h3>Primer título: Copa de la Reina</h3>
+          <p>Viajamos a Granada para ver a la Real Sociedad femenina proclamarse campeona de la Copa de la Reina por primera vez en su historia.</p>
+        </div>
+        <div class="tl-item rev">
+          <div class="tl-dot"></div>
+          <p class="tl-year">Noviembre 2022</p>
+          <h3>Viaje a Graz, Liga Europa</h3>
+          <p>Desplazamiento a Austria para el partido europeo, con intercambio de bufandas con aficiones de otros clubes.</p>
+        </div>
+        <div class="tl-item rev">
+          <div class="tl-dot"></div>
+          <p class="tl-year">Noviembre 2022</p>
+          <h3>Visita de Juan Gómez</h3>
+          <p>Juan Gómez, exjugador argentino de la Real Sociedad (1996-2000), visita nuestro local de C/ Cantabria 79.</p>
+        </div>
+        <div class="tl-item rev">
+          <div class="tl-dot"></div>
+          <p class="tl-year">Marzo 2023</p>
+          <h3>Visita de Óscar Badallo</h3>
+          <p>El periodista de MARCA Óscar Badallo, corresponsal de la Real Sociedad, nos visita en el local.</p>
+        </div>
+        <div class="tl-item rev">
+          <div class="tl-dot"></div>
+          <p class="tl-year">Junio 2023</p>
+          <h3>Hermanamiento con la Peña Galicia</h3>
+          <p>Viajamos a A Coruña para el aniversario de la Peña Galicia Txuri Urdin, con la que compartimos lazos de hermandad.</p>
+        </div>
+        <div class="tl-item rev">
+          <div class="tl-dot"></div>
+          <p class="tl-year">Mayo 2024</p>
+          <h3>Final de la Copa de la Reina en Zaragoza</h3>
+          <p>Acompañamos a la Real Sociedad femenina hasta La Romareda en la final de la Copa de la Reina ante el FC Barcelona.</p>
+        </div>
+        <div class="tl-item rev">
+          <div class="tl-dot"></div>
           <p class="tl-year">Junio 2024</p>
           <h3>10º aniversario</h3>
           <p>Juan Gómez, exjugador de la Real, apadrina el evento. Noticias de Gipuzkoa y Mundo Deportivo cubren la celebración.</p>
+        </div>
+        <div class="tl-item rev">
+          <div class="tl-dot"></div>
+          <p class="tl-year">Agosto 2025</p>
+          <h3>Viaje a Oviedo</h3>
+          <p>Nuevo desplazamiento de liga, con reencuentro incluido con los amigos de la Peña Galicia Txuri Urdin.</p>
         </div>
         <div class="tl-item rev">
           <div class="tl-dot"></div>
@@ -1141,23 +1592,34 @@ if (counter) {
   ioCnt.observe(counter);
 }
 
+// ── Galería: filtros ──
+const galItems = [...document.querySelectorAll('.gal-item')];
+const galFilters = [...document.querySelectorAll('.gal-filter')];
+function applyFilter(filter) {
+  galItems.forEach(it => {
+    it.classList.toggle('gal-hide', filter !== 'all' && it.dataset.category !== filter);
+  });
+  galFilters.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+}
+galFilters.forEach(b => b.addEventListener('click', () => applyFilter(b.dataset.filter)));
+
 // ── Lightbox ──
-const items = [...document.querySelectorAll('.gal-item')];
 const lb = document.getElementById('lb');
 const lbImg = document.getElementById('lb-img');
 const lbCap = document.getElementById('lb-cap');
-let lbIdx = 0, lastFocus = null;
+let lbSet = galItems, lbIdx = 0, lastFocus = null;
 
 function lbShow(i) {
-  lbIdx = (i + items.length) % items.length;
-  const img = items[lbIdx].querySelector('img');
+  lbIdx = (i + lbSet.length) % lbSet.length;
+  const img = lbSet[lbIdx].querySelector('img');
   lbImg.src = img.src;
   lbImg.alt = img.alt;
-  lbCap.textContent = items[lbIdx].dataset.cap || '';
+  lbCap.textContent = lbSet[lbIdx].dataset.cap || '';
 }
-function lbOpen(i) {
+function lbOpen(it) {
+  lbSet = galItems.filter(el => !el.classList.contains('gal-hide'));
   lastFocus = document.activeElement;
-  lbShow(i);
+  lbShow(lbSet.indexOf(it));
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
   document.getElementById('lb-close').focus();
@@ -1167,7 +1629,7 @@ function lbClose() {
   document.body.style.overflow = '';
   if (lastFocus) lastFocus.focus();
 }
-items.forEach((it, i) => it.addEventListener('click', () => lbOpen(i)));
+galItems.forEach(it => it.addEventListener('click', () => lbOpen(it)));
 document.getElementById('lb-close').addEventListener('click', lbClose);
 document.getElementById('lb-prev').addEventListener('click', () => lbShow(lbIdx - 1));
 document.getElementById('lb-next').addEventListener('click', () => lbShow(lbIdx + 1));

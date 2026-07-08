@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ricardoba74.github.io/donostiarras-bartzelona/sitemap.xml
+Sitemap: https://donostiarrasbartzelona.com/sitemap.xml

@@ -2,21 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://ricardoba74.github.io/donostiarras-bartzelona/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <loc>https://donostiarrasbartzelona.com/</loc>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://ricardoba74.github.io/donostiarras-bartzelona/imgs/og-image.jpg</image:loc>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/og-image.jpg</image:loc>
       <image:title>Peña Donostiarras Bartzelona — Peña oficial de la Real Sociedad en Barcelona</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://ricardoba74.github.io/donostiarras-bartzelona/imgs/copa-final.webp</image:loc>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/copa-final.webp</image:loc>
       <image:title>Socios de la peña con la bufanda de la Final de Copa 2026</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://ricardoba74.github.io/donostiarras-bartzelona/imgs/aniversario.webp</image:loc>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/aniversario.webp</image:loc>
       <image:title>Cena del décimo aniversario de la peña, junio de 2024</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/pena-granada-2019-01.webp</image:loc>
+      <image:title>Aficionados de la Real Sociedad ante el estadio de Granada, final de la Copa de la Reina 2019</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/pena-graz-2022-08.webp</image:loc>
+      <image:title>Socios de la peña con una bufanda de la Real Sociedad ante el ayuntamiento de Graz, Austria</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/pena-donosti-2023-12.webp</image:loc>
+      <image:title>Socios de la peña en el paseo de La Concha, Donostia-San Sebastián</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/pena-galicia-2023-08.webp</image:loc>
+      <image:title>Foto de familia del hermanamiento con la Peña Galicia Txuri Urdin</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/pena-zaragoza-2024-06.webp</image:loc>
+      <image:title>Socios de la peña ante la Basílica del Pilar, final de la Copa de la Reina en Zaragoza</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/pena-decimo-2024-01.webp</image:loc>
+      <image:title>Local de la peña decorado con las bufandas conmemorativas del 10º aniversario</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/pena-oviedo-2025-05.webp</image:loc>
+      <image:title>Cena de sidrería con socios de la peña en el viaje a Oviedo</image:title>
     </image:image>
   </url>
 </urlset>
