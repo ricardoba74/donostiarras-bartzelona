@@ -396,6 +396,15 @@
       .about-badge { left:auto; right:10px; bottom:-10px; }
     }
 
+    /* ── PRÓXIMOS PARTIDOS ── */
+    .partidos-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.2rem,3vw,2rem); }
+    .partido-card {
+      border-radius:18px; overflow:hidden; border:1px solid var(--border);
+      box-shadow:0 24px 60px rgba(0,0,0,.45);
+    }
+    .partido-card img { width:100%; height:auto; display:block; }
+    @media(max-width:820px){ .partidos-grid { grid-template-columns:1fr; } }
+
     /* ── GALLERY ── */
     .gal { background:var(--bg-mid); }
     .gal-grid {
@@ -668,6 +677,7 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navlinks">
+      <li><a href="#proximos-partidos">Partidos</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#prensa">Prensa</a></li>
@@ -708,6 +718,22 @@
     <div class="stat"><span class="n">1909</span><span class="l">Real Sociedad fundada</span></div>
   </div>
 </div>
+
+<!-- PRÓXIMOS PARTIDOS -->
+<section id="proximos-partidos" aria-labelledby="partidos-h">
+  <div class="wrap">
+    <p class="tag">Próximos partidos</p>
+    <h2 class="sh" id="partidos-h">Los vemos juntos en la peña</h2>
+    <div class="partidos-grid" id="partidosGrid">
+      <article class="partido-card rev" data-date="2026-08-26T21:00:00+02:00">
+        <img src="imgs/partido-madrid-2026-08-26.webp" alt="Cartel del partido Real Madrid vs Real Sociedad, miércoles 26 de agosto a las 21:00, viéndolo en la sede de la Peña Donostiarras Bartzelona, C/ Cantabria 79, Barcelona" width="1200" height="760" loading="lazy">
+      </article>
+      <article class="partido-card rev" data-date="2026-08-29T19:00:00+02:00">
+        <img src="imgs/partido-espanyol-2026-08-29.webp" alt="Cartel del partido Real Sociedad vs RCD Espanyol, sábado 29 de agosto a las 19:00, viéndolo en la sede de la Peña Donostiarras Bartzelona, C/ Cantabria 79, Barcelona" width="1200" height="766" loading="lazy">
+      </article>
+    </div>
+  </div>
+</section>
 
 <!-- SOBRE NOSOTROS -->
 <section id="nosotros" aria-labelledby="nosotros-h">
@@ -1490,6 +1516,7 @@
     </div>
     <nav class="foot-col" aria-label="Navegación del pie">
       <h2>Navegación</h2>
+      <a href="#proximos-partidos">Partidos</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#galeria">Galería</a>
       <a href="#prensa">Prensa</a>
@@ -1555,6 +1582,19 @@ const ioNav = new IntersectionObserver(entries => {
   });
 }, {threshold:.35});
 sections.forEach(s => ioNav.observe(s));
+
+// ── Próximos partidos: solo los 2 más cercanos que aún no se han jugado ──
+(function(){
+  const cards = Array.from(document.querySelectorAll('.partido-card'));
+  const now = new Date();
+  const upcoming = cards
+    .filter(c => new Date(c.dataset.date) > now)
+    .sort((a, b) => new Date(a.dataset.date) - new Date(b.dataset.date));
+  cards.forEach(c => { c.hidden = true; });
+  upcoming.slice(0, 2).forEach(c => { c.hidden = false; });
+  const partidosSection = document.getElementById('proximos-partidos');
+  if (partidosSection && upcoming.length === 0) partidosSection.hidden = true;
+})();
 
 // ── Scroll reveal (escalonado) ──
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
