@@ -532,6 +532,15 @@
     .tl-item p { color:var(--muted); font-size:.92rem; line-height:1.7; }
     @media(max-width:820px){ .history-wrap { grid-template-columns:1fr; } }
 
+    /* ── FAN WALL ── */
+    .fw-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; }
+    .fw-item { text-align:center; }
+    .fw-photo { border-radius:14px; overflow:hidden; aspect-ratio:1/1; box-shadow:0 16px 40px rgba(0,0,0,.4); }
+    .fw-photo img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+    .fw-item:hover .fw-photo img { transform:scale(1.06); }
+    .fw-name { margin-top:.8rem; font-family:var(--font-display); font-size:1.05rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--sky); }
+    @media(max-width:720px){ .fw-grid { grid-template-columns:repeat(2,1fr); } }
+
     /* ── FAQ ── */
     .faq-list { max-width:820px; margin:0 auto; }
     .faq-item {
@@ -682,6 +691,7 @@
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#prensa">Prensa</a></li>
       <li><a href="#historia">Historia</a></li>
+      <li><a href="#fanwall">Fan Wall</a></li>
       <li><a href="#faq">Preguntas</a></li>
       <li><a href="#contacto">Contacto</a></li>
       <li><a href="#unete" class="nav-cta">Hazte socio</a></li>
@@ -1359,6 +1369,25 @@
           <h3>Final de Copa del Rey</h3>
           <p>La peña vive la Final de Copa entre el Atlético de Madrid y la Real Sociedad del 19 de abril de 2026, con bufanda conmemorativa incluida.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- FAN WALL -->
+<section id="fanwall" aria-labelledby="fanwall-h">
+  <div class="wrap">
+    <p class="tag rev">Fan Wall</p>
+    <h2 class="sh rev" id="fanwall-h">Fan Wall</h2>
+    <p class="sp rev">La Real nos acompaña estemos donde estemos. Así lucen los miembros de la peña Donostiarras Bartzelona los colores Txuri-Urdin por el mundo.</p>
+    <div class="fw-grid">
+      <div class="fw-item rev">
+        <div class="fw-photo">
+          <img src="imgs/fanwall-lanzarote-01.webp" alt="Socio de la peña con la camiseta de Oyarzabal y la Real Sociedad, ante una escultura y un faro en Lanzarote" width="1079" height="1067" loading="lazy">
+        </div>
+        <p class="fw-name">Lanzarote</p>
       </div>
     </div>
   </div>
