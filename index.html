@@ -165,6 +165,7 @@
       --bg-card:  #131D2C;
       --muted:    #93A7C4;
       --border:   rgba(255,255,255,.08);
+      --paper:    #F3F3F5; /* fondo de estudio de las fotos de merchandising */
       --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
       --font-body: 'Barlow', system-ui, -apple-system, sans-serif;
     }
@@ -541,6 +542,56 @@
     .fw-name { margin-top:.8rem; font-family:var(--font-display); font-size:1.05rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--sky); }
     @media(max-width:720px){ .fw-grid { grid-template-columns:repeat(2,1fr); } }
 
+    /* ── TIENDA (merchandising) ── */
+    .shop { background:linear-gradient(180deg,var(--bg) 0%,var(--bg-mid) 100%); position:relative; overflow:hidden; }
+    .shop::before {
+      content:''; position:absolute; top:-120px; left:-160px; width:520px; height:520px; border-radius:50%;
+      background:radial-gradient(circle,rgba(0,87,168,.28) 0%,transparent 70%); pointer-events:none;
+    }
+    .shop .wrap { position:relative; }
+    .shop-head { display:flex; justify-content:space-between; align-items:flex-end; gap:1.5rem; flex-wrap:wrap; margin-bottom:2.6rem; }
+    .shop-head .sp { margin-bottom:0; }
+    .shop-alert {
+      display:inline-flex; align-items:center; gap:.6rem; flex-shrink:0;
+      background:rgba(201,162,39,.12); border:1px solid rgba(201,162,39,.5); color:var(--gold);
+      border-radius:999px; padding:.55rem 1.1rem;
+      font-family:var(--font-display); font-weight:700; font-size:1rem; letter-spacing:.1em; text-transform:uppercase;
+    }
+    .shop-alert .dot { width:9px; height:9px; border-radius:50%; background:var(--gold); animation:pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{ box-shadow:0 0 0 0 rgba(201,162,39,.6); } 50%{ box-shadow:0 0 0 7px rgba(201,162,39,0); } }
+    .shop-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.2rem,2.5vw,1.8rem); }
+    .merch-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:18px; overflow:hidden;
+      display:flex; flex-direction:column; transition:opacity .7s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .merch-card:hover { transform:translateY(-6px); border-color:rgba(0,87,168,.6); box-shadow:0 22px 50px rgba(0,0,0,.45); }
+    .merch-photo {
+      position:relative; aspect-ratio:1/1; background:var(--paper); overflow:hidden;
+      display:flex; align-items:center; justify-content:center; padding:8%;
+    }
+    .merch-photo img { max-width:100%; max-height:100%; width:auto; height:auto; display:block; transition:transform .5s ease; }
+    .merch-card:hover .merch-photo img { transform:scale(1.05); }
+    /* La bufanda es muy apaisada: en diagonal llena el cuadrado como en un expositor */
+    .merch-photo.is-scarf { padding:0; }
+    .merch-photo.is-scarf img { max-width:none; max-height:none; width:132%; transform:rotate(-38deg); }
+    .merch-card:hover .merch-photo.is-scarf img { transform:rotate(-38deg) scale(1.05); }
+    .merch-price {
+      position:absolute; top:1rem; right:1rem; z-index:1;
+      width:76px; height:76px; border-radius:50%;
+      background:var(--gold); color:var(--bg); box-shadow:0 10px 26px rgba(0,0,0,.3);
+      display:flex; align-items:center; justify-content:center; transform:rotate(8deg);
+      font-family:var(--font-display); font-weight:800; font-size:2rem; line-height:1;
+    }
+    .merch-price small { font-size:1.1rem; margin-left:1px; }
+    .merch-body { padding:1.4rem 1.5rem 1.6rem; display:flex; flex-direction:column; flex:1; }
+    .merch-body h3 { font-family:var(--font-display); font-size:1.6rem; font-weight:800; text-transform:uppercase; letter-spacing:.02em; line-height:1.05; }
+    .merch-body p { color:var(--muted); font-size:.92rem; line-height:1.7; margin:.5rem 0 1.3rem; flex:1; }
+    .merch-body .btn { justify-content:center; font-size:1rem; padding:.85rem 1.2rem; }
+    .shop-foot { margin-top:2rem; text-align:center; color:var(--muted); font-size:.92rem; }
+    .shop-foot strong { color:var(--white); }
+    @media(max-width:860px){ .shop-grid { grid-template-columns:1fr 1fr; } }
+    @media(max-width:580px){ .shop-grid { grid-template-columns:1fr; } }
+
     /* ── FAQ ── */
     .faq-list { max-width:820px; margin:0 auto; }
     .faq-item {
@@ -692,6 +743,7 @@
       <li><a href="#prensa">Prensa</a></li>
       <li><a href="#historia">Historia</a></li>
       <li><a href="#fanwall">Fan Wall</a></li>
+      <li><a href="#tienda">Tienda</a></li>
       <li><a href="#faq">Preguntas</a></li>
       <li><a href="#contacto">Contacto</a></li>
       <li><a href="#unete" class="nav-cta">Hazte socio</a></li>
@@ -1437,6 +1489,58 @@
 
 <div class="rule"></div>
 
+<!-- TIENDA -->
+<section id="tienda" class="shop" aria-labelledby="tienda-h">
+  <div class="wrap">
+    <div class="shop-head">
+      <div>
+        <p class="tag rev">Tienda de la peña</p>
+        <h2 class="sh rev" id="tienda-h">Lleva la peña puesta</h2>
+        <p class="sp rev">Bufanda, mochila y sudadera con el escudo de Donostiarras Bartzelona. Para el sofá, para la grada o para el próximo viaje a Anoeta. Cuando se acaben, se acabaron.</p>
+      </div>
+      <p class="shop-alert rev"><span class="dot" aria-hidden="true"></span>Hasta fin de existencias</p>
+    </div>
+    <div class="shop-grid">
+      <article class="merch-card rev">
+        <div class="merch-photo is-scarf">
+          <span class="merch-price" aria-label="Precio: 12 euros">12<small>€</small></span>
+          <img src="imgs/merch-bufanda.webp" alt="Bufanda a rayas azules y blancas de la Peña Donostiarras Bartzelona, con el texto «Peña oficial de la Real Sociedad SAD», las fechas 2014-2024 y el escudo de la Real entre la ikurriña y la senyera" width="1358" height="249" loading="lazy">
+        </div>
+        <div class="merch-body">
+          <h3>Bufanda 10º aniversario</h3>
+          <p>La bufanda txuri-urdin de nuestros diez años (2014-2024), con el escudo, la ikurriña y la senyera. Imprescindible en cada partido.</p>
+          <a class="btn btn-blue" href="https://wa.me/34618433942?text=Hola%2C%20quiero%20la%20bufanda%20de%20la%20pe%C3%B1a%20(12%E2%82%AC).%20%C2%BFC%C3%B3mo%20la%20consigo%3F" target="_blank" rel="noopener">La quiero →</a>
+        </div>
+      </article>
+      <article class="merch-card rev">
+        <div class="merch-photo">
+          <span class="merch-price" aria-label="Precio: 10 euros">10<small>€</small></span>
+          <img src="imgs/merch-mochila.webp" alt="Mochila azul con el escudo de la Peña Donostiarra Bartzelona bordado, cordón elástico cruzado en el frontal y bolsillos laterales de rejilla" width="637" height="1000" loading="lazy">
+        </div>
+        <div class="merch-body">
+          <h3>Mochila de la peña</h3>
+          <p>Azul Real, con el escudo bordado, cordón elástico en el frontal y bolsillos laterales. Lista para cualquier desplazamiento.</p>
+          <a class="btn btn-blue" href="https://wa.me/34618433942?text=Hola%2C%20quiero%20la%20mochila%20de%20la%20pe%C3%B1a%20(10%E2%82%AC).%20%C2%BFC%C3%B3mo%20la%20consigo%3F" target="_blank" rel="noopener">La quiero →</a>
+        </div>
+      </article>
+      <article class="merch-card rev">
+        <div class="merch-photo">
+          <span class="merch-price" aria-label="Precio: 15 euros">15<small>€</small></span>
+          <img src="imgs/merch-sudadera.webp" alt="Sudadera negra con capucha y cremallera de la Peña Donostiarras Bartzelona, con el escudo bordado en el pecho y bolsillo canguro" width="758" height="808" loading="lazy">
+        </div>
+        <div class="merch-body">
+          <h3>Sudadera con capucha</h3>
+          <p>Negra, con cremallera, capucha y el escudo de la peña bordado en el pecho. Para los partidos de invierno.</p>
+          <a class="btn btn-blue" href="https://wa.me/34618433942?text=Hola%2C%20quiero%20la%20sudadera%20de%20la%20pe%C3%B1a%20(15%E2%82%AC).%20%C2%BFQu%C3%A9%20tallas%20os%20quedan%3F" target="_blank" rel="noopener">La quiero →</a>
+        </div>
+      </article>
+    </div>
+    <p class="shop-foot rev">Pídelo por <strong>WhatsApp</strong> y te decimos cómo conseguirlo. <strong>Unidades limitadas.</strong></p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
 <!-- FAQ -->
 <section id="faq" aria-labelledby="faq-h">
   <div class="wrap">
@@ -1595,6 +1699,7 @@
       <a href="#galeria">Galería</a>
       <a href="#prensa">Prensa</a>
       <a href="#historia">Historia</a>
+      <a href="#tienda">Tienda</a>
       <a href="#faq">Preguntas frecuentes</a>
       <a href="#unete">Hazte socio</a>
       <a href="#contacto">Contacto</a>
