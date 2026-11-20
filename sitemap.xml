@@ -3,12 +3,20 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://donostiarrasbartzelona.com/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://donostiarrasbartzelona.com/imgs/og-image.jpg</image:loc>
       <image:title>Peña Donostiarras Bartzelona — Peña oficial de la Real Sociedad en Barcelona</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/pena-anoeta-2026-01.webp</image:loc>
+      <image:title>Socios con la bandera de la Peña Donostiarras Bartzelona en la grada del Reale Arena, noviembre de 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://donostiarrasbartzelona.com/imgs/pena-anoeta-2026-02.webp</image:loc>
+      <image:title>La bandera de la peña frente a la fachada del Reale Arena, noviembre de 2026</image:title>
     </image:image>
     <image:image>
       <image:loc>https://donostiarrasbartzelona.com/imgs/copa-final.webp</image:loc>
